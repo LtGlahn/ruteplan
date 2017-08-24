@@ -5,5 +5,7 @@ Skrevet i python 3, men har prøvd å være bakoverkompatibel - og prøver så g
 
 # Brukernavn og passord
 
-Legg inn ditt brukernavn og passord i  ```credentials.json```. Kontakt [ruteplan@vegvesen.no](ruteplan@vegvesen.no) for å få tilgang. 
+Ditt brukernavn og passord legger du inn i filen ```credentials.json```. Via .gitignore-mekanismen unngår du da å publisere passordet ditt på github. Bruk ```credentials-template.json``` som mal. Kontakt [ruteplan@vegvesen.no](ruteplan@vegvesen.no) for å få tilgang. 
+
+
 

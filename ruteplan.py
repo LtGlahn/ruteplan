@@ -53,13 +53,17 @@ def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
     return credentials
     
 
-def parseruteplan( responseobj, egenskaper={}  ): 
+def parseruteplan( responseobj, egenskaper={}, startvertices=None  ): 
     """Tar responsobjekt fra ruteplantjenesten, omsetter til en 
     liste med Geojson-features. Disse kan puttes inn i en featureCollection
     eller bearbeides med annet vis. 
     
     Hvis du har andre (meta)data som du vil knytte til ruteforslaget
-    kan dette tas med via parameteren egenskaper={'key':'val'} 
+    kan dette sendes inn som en dict til parameteren egenskaper={'key':'val'} 
+    
+    Parameteren startvertices=N (heltall) gir starten av ruta (maks N 
+    koordinatpunkt regnet fra start). Nytting for kontroll av at startpunkt
+    er der du vil ha det
     """
     
     # Feilsituasjoner? 
@@ -70,7 +74,7 @@ def parseruteplan( responseobj, egenskaper={}  ):
 
     data = responseobj.json()
     if 'messages' in data.keys():
-        message = str( data['messages']) + ' ' + r.url
+        message = str( data['messages']) + ' ' + responseobj.url
         raise ValueError( message)
 
     featurelist = []
@@ -88,17 +92,21 @@ def parseruteplan( responseobj, egenskaper={}  ):
             egen2[k] = attributes[k]
             
         # Parser listen med ekstra attributter
-        for val in extra_attributes:
-            egen2[val['key']] = val['value']
+        if extra_attributes: 
+            for val in extra_attributes:
+                egen2[val['key']] = val['value']
             
-        # Henter litt snacks fra directions-elementet: 
+        # Henter litt snacks fra directions-elementet:
         egen2['routeName'] = data['directions'][ii]['routeName']
         
-        # Legger på info om beste - nestbeste osv
+        # Legger paa info om beste - nestbeste osv
         egen2['rutealternativNr'] = ii
         
         # Behandler geometri
-        mygeom =  geojson.LineString( rute['geometry']['paths'][0])
+        if startvertices: 
+            mygeom =  geojson.LineString( rute['geometry']['paths'][0][:startvertices])
+        else: 
+            mygeom =  geojson.LineString( rute['geometry']['paths'][0])
         
         # Lager geojson-objekt
         mygeojs = geojson.Feature( geometry=mygeom, properties=egen2)

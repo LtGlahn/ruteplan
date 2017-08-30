@@ -14,6 +14,5 @@ En nettverksanalyse består i å analyse reisetider, kostnader og avstander i et
 
 Fattigmannsvarianten er å bruke ruteplantjenesten med et stort antall start-stopp punkter, f.eks. reiser mellom alle adresser i en liste. Har du N adressepunkt og bare regner den ene retningen (A->B, men ikke B->a) så trenger du (N^2-N)/2 kall til rutekalltjenesten. Du skal ikke ha mer enn 71 punkt i adresselisten din før du er i konflikt med begrensningen på 2500 kall/døgn. 
 
-**SNAKK MED SYSTEMEIER RUTEPLANTJENESTEN HVIS DET ER BEHOV FOR DENNE TYPEN ANALYSER**. [ruteplan@vegvesen.no](ruteplan@vegvesen.no) 
+**SNAKK MED SYSTEMEIER RUTEPLANTJENESTEN HVIS DET ER BEHOV FOR DENNE TYPEN ANALYSER**. [ruteplan@vegvesen.no](ruteplan@vegvesen.no). Så hjelper vi deg med å finne andre løsninger! En variant er at vi kjører denne analysen internt på Vegvesenets datanettverk - mot testmiljøet. Der kan vi kjøre tung belastning uten at det går ut over andre brukere. **SNAKK MED OSS**, så finner vi løsninger! 
 
-Internt i Vegvesenet har vi anledning til å kjøre tung belastning mot testmiljøet. Eventuelt kan vi finne andre løsninger. 

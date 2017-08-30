@@ -16,4 +16,4 @@ Fattigmannsvarianten er å bruke ruteplantjenesten med et stort antall start-sto
 
 **SNAKK MED SYSTEMEIER RUTEPLANTJENESTEN HVIS DET ER BEHOV FOR DENNE TYPEN ANALYSER**. [ruteplan@vegvesen.no](ruteplan@vegvesen.no) 
 
-Internt i Vegvesenet har vi anledning til å kjøre tung belastning mot testmiljøet. Eventuelt kan vi finne andre måter å løse dette på. 
+Internt i Vegvesenet har vi anledning til å kjøre tung belastning mot testmiljøet. Eventuelt kan vi finne andre løsninger. 

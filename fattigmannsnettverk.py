@@ -57,7 +57,7 @@ for kk, punkt in enumerate( punktdata['resultat']) :
 
     try: 
         r = ruteplan.anropruteplan( coordinates=[ punkt['posisjon'], maal], 
-            server='ruteplanTest', ruteplanparams={ 'format' :  'json', 
+            server='ruteplanTEST', ruteplanparams={ 'format' :  'json', 
             'route_type' : 'alternative', 'geometryformat' : 'iso' })
 
         nyedata = ruteplan.parseruteplan( r, egenskaper=punkt, startvertices=20)
@@ -97,7 +97,7 @@ with open( 'testruter-geojson-4326.json', 'w') as f:
 ### Itererer over alle mulige permutasjoner: 
     
 # Lager subsett av data, for utviking 
-del punktdata['resultat'][5:]
+# del punktdata['resultat'][5:]
 
 # Definerer datastruktur for CSV
 mittsvar = { 'fra_nodeid' :  'text', 
@@ -118,7 +118,7 @@ mittsvar = { 'fra_nodeid' :  'text',
 sammendragfil = 'alleruteforslag.csv'
 outputdir = 'ruteforslag/'
 
-f = open( sammendragfil, 'w')
+f = open( sammendragfil, 'w', encoding='utf-8')
 w = csv.DictWriter(f, mittsvar.keys(), delimiter=";", 
                   quoting=csv.QUOTE_ALL, lineterminator='\n')
 w.writeheader()
@@ -155,7 +155,7 @@ for i1, p1 in enumerate( punktdata['resultat']):
             except ValueError as e:
                 z = e
                 print( z)
-                print( 'Ruteberegning FEILER', mittsvar['fra_node'], ' -> ', mittsvar['til_node'])
+                print( 'Ruteberegning FEILER', mittsvar['fra_nodeid'], ' -> ', mittsvar['til_nodeid'])
                 
                 mittsvar['Total_Meters'] = None
                 mittsvar['Total_Minutes'] = None

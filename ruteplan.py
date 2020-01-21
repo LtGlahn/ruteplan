@@ -141,11 +141,14 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
     if 'proxies' in credentials.keys(): 
         proxies = credentials['proxies']
     
+    # Siden vi modifiserer ruteplan-params så må vi kopiere, ellers kan du få kluss
+    params = copy.deepcopy( ruteplanparams )
+
     # Har vi eksplisitt angitt "stops" i ruteplanparametrene? 
     # Hvis ikke bygger vi det ut fra koordinatene
     if not 'stops' in ruteplanparams.keys(): 
         cords = copy.deepcopy( coordinates)
-        
+
         if len(cords) < 2: 
             raise ValueError( 'Coordinate list must have at least 2 points')
         
@@ -153,15 +156,15 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
         while len(cords): 
             stopstrings.append( ','.join( str(px) for px in cords.pop(0))  )
         
-        ruteplanparams['stops'] = ';'.join( stopstrings)
+        params['stops'] = ';'.join( stopstrings)
         
     if credentials['auth']:
         r = requests.get( credentials['url'], auth=credentials['auth'], 
-                         params=ruteplanparams, proxies=proxies)
+                         params=params, proxies=proxies)
         
     else: 
-        r = requests.get( credentials['url'], params=ruteplanparams, 
+        r = requests.get( credentials['url'], params=params, 
                          proxies=proxies)
-        
+
     return r
 

@@ -168,3 +168,88 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
 
     return r
 
+def fiksvegdata2ruteplanparams( fiksvegdataparams ): 
+    """
+    Oversetter datastruktur fra fiksvegdata (sykkelveg.no feilmelding) til ruteplan parametre
+
+    Eksempel på datastruktur fra fiksvegdata: 
+
+    ```json
+    {
+        "routeType": 0,
+        "effort": 0,
+        "locations": [
+            {
+            "easting": 236501.43,
+            "northing": 7073079.82,
+            "elevation": 0
+            },
+            {
+            "easting": 371248.035,
+            "northing": 7265105.225,
+            "elevation": 0
+            }
+        ],
+        "barriers": "GEOMETRYCOLLECTION(POLYGON((269512.75097657 7042004.4277345, 
+                                269438.70410157 7041660.638672,269920.00878907 7041242.8027345,
+                                270295.53222657 7041501.966797,269512.75097657 7042004.4277345)),
+                                POINT(264082.86718751 7017882.9970705))",
+        "language": "no",
+        "epsg": "EPSG:32633",
+        "includeGML": false,
+        "includeWKT": true,
+        "avoidTrails": false
+    }
+    ```
+
+    Som oversettes til 
+
+    ```json
+    { 
+        "route_type" : "bike", 
+        "stops" : "236501.43,7073079.82;371248.035,7265105.225" 
+        "effort": 0, 
+        "barriers" :  "GEOMETRYCOLLECTION(POLYGON((269512.75097657 7042004.4277345,
+                                269438.70410157 7041660.638672,269920.00878907 7041242.8027345,
+                                270295.53222657 7041501.966797,269512.75097657 7042004.4277345)),
+                                POINT(264082.86718751 7017882.9970705))",
+        "geometryformat" : "isoz", 
+        "avoidTrails" : false
+
+    }
+
+    """
+
+    false = False
+    true = True
+
+    assert 'locations' in fiksvegdataparams, "Må ha locations-data i fiksvegdata-parameter"
+    assert isinstance( fiksvegdataparams['locations'], list), "Ugyldig datatype for locations-feltet (liste med dict)"
+    assert isinstance( fiksvegdataparams['locations'][0], dict), "Ugyldig datatype for locations-feltet  (liste med dict)"
+    assert 'easting' in fiksvegdataparams['locations'][0], "Location-element mangler data for 'easting'"
+    assert 'northing' in fiksvegdataparams['locations'][0], "Location-element mangler data for 'northing'"
+    assert len( fiksvegdataparams['locations'] ) > 1, "Location-element må ha minst to elementer"
+    # Oversetter  [ { "easting" : x0, "northing" : y0 } ] => komma- og semikolonseparert tekststreng
+    # "x0,y0;x1,y1;x2,y2" .... 
+    stops =  ';'.join(  [ ','.join( [ str( x['easting']), str( x['northing']) ] ) 
+                    for x in fiksvegdataparams['locations'] ] )
+
+    ruteplanparams = {    "geometryformat"      : "isoz", 
+                          "avoidTrails"         : False, 
+                          "route_type"          : "bike",
+                          "avoidTrails"         : False,
+                        #   "barriers"            : "GEOMETRYCOLLECTION()", 
+                          "format"              : "json",
+                          "stops"               : stops 
+    }
+
+    # if 'barriers' in fiksvegdataparams:
+    #     ruteplanparams['barriers'] = fiksvegdataparams['barriers']
+
+    if 'effort' in fiksvegdataparams:
+        ruteplanparams['effort'] = fiksvegdataparams['effort']
+
+    if 'avoidTrails' in fiksvegdataparams:
+        ruteplanparams['avoidTrails'] = fiksvegdataparams['avoidTrails']
+
+    return ruteplanparams

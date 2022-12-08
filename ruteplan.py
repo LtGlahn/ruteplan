@@ -23,6 +23,39 @@ import json
 import copy
 import geojson
 
+import STARTHER
+import ruteplan
+from copy import deepcopy 
+
+from shapely.geometry import shape
+
+def ruteplan2dict( **kwargs ): 
+    """
+    Anrop ruteplantjenesten og få liste med dictionaries tilbake 
+
+    NB! geometrien - feltet 'geometry' - er konvertert til shapely-objekter 
+
+    Tynn wrapper rundt funksjonene anropruteplan (returnerer requests responsobjekt) 
+    og parseruteplan (returnerer liste med geojson-features). Se dokumentasjonen for disse funksjonene 
+    """
+
+    data = None 
+    r = anropruteplan( **kwargs )
+    if r.ok: 
+        features = parseruteplan( r )
+        data = [] 
+        for feat in features: 
+            props = deepcopy( feat['properties'] )
+            props['geometry'] = shape( feat['geometry'] )
+            data.append( props )
+
+    else: 
+        print( f"Feilkode fra ruteplantjenesten {r.http_status} {r.text} ")
+
+    return data 
+
+
+
 def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
   
     try: 
@@ -88,8 +121,8 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
         
         # Lager attributtliste av de egenskapene som er igjen: 
         egen2 = copy.deepcopy( egenskaper)
-        for k in attributes.keys():
-            egen2[k] = attributes[k]
+        egen2.update(attributes)
+        
             
         # Parser listen med ekstra attributter
         if extra_attributes: 
@@ -101,6 +134,10 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
         
         # Legger paa info om beste - nestbeste osv
         egen2['rutealternativNr'] = ii
+
+        # NVDB veglenkesekvenser 
+        if 'nvdbreferences' in rute: 
+            egen2['nvdbreferences'] = rute['nvdbreferences']
         
         # Behandler geometri
         if startvertices: 
@@ -116,9 +153,8 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
           
     return featurelist
 
-def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz' }, 
-                  server='ruteplan', coordinates = 
-    [ (269756.5,7038421.3), (269682.4,7039315.6)]): 
+def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz', 'returnNvdbReferences' : True }, 
+                  server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)]): 
     """Fetch data from the NVDB roting API 
     
     ruteplanparams = dict with parameters for the routing applications. 

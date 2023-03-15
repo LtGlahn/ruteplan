@@ -7,11 +7,11 @@ You must have the file credentials.json in your working directory with this
 content: 
     
 {
-	"ruteplan": {
-		"pw": "yourpassword",
-		"user": "yourUserName",
-		"url": "https://www.vegvesen.no/ruteplan/routingservice_v1_0/routingservice/solve"
-	}
+    "ruteplan": {
+        "pw": "yourpassword",
+        "user": "yourUserName",
+        "url": "https://www.vegvesen.no/ruteplan/routingservice_v1_0/routingservice/solve"
+    }
 }
 
 
@@ -21,9 +21,11 @@ content:
 import requests
 import json
 import copy
+from requests.auth import HTTPBasicAuth
+
 import geojson
 
-import STARTHER
+# import STARTHER
 import ruteplan
 from copy import deepcopy 
 
@@ -50,8 +52,7 @@ def ruteplan2dict( **kwargs ):
             data.append( props )
 
     else: 
-        print( f"Feilkode fra ruteplantjenesten {r.http_status} {r.text} ")
-
+        print( f"Feilkode fra ruteplantjenesten HTTP STATUS={r.status_code} {r.text} ")
     return data 
 
 
@@ -59,9 +60,9 @@ def ruteplan2dict( **kwargs ):
 def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
   
     try: 
-    	with open( credfile) as f:
-    		cred = json.load( f)
-		
+        with open( credfile) as f:
+            cred = json.load( f)
+        
     except FileNotFoundError: 
         print( 'You must have the file ', credfile, 'in your working dir')
         print( 'Use credentials-template.json as template for creating it')
@@ -76,10 +77,10 @@ def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
         raise
         
     # Sjekker om det er oppgitt brukernavn og passord
-    test = set(['pw', 'user'])
-    if test.issubset( set(credentials)) and credentials['pw'] and \
-                                                        credentials['user']:
-        credentials['auth'] = ( credentials['user'], credentials['pw'])
+    if 'user' in credentials and 'pw' in credentials:
+        user = credentials.pop( 'user')
+        pw   = credentials.pop( 'pw')
+        credentials['auth'] = HTTPBasicAuth( user, pw )
     else: 
         credentials['auth'] = None
         
@@ -102,7 +103,7 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
     # Feilsituasjoner? 
     if not responseobj.ok: 
         message= ' '.join( [ 'Invalid response from ruteplan:', 
-                            str(r.status_code), r.reason, r.url ])
+                            str(responseobj.status_code), responseobj.reason, responseobj.url ])
         raise ValueError( message )
 
     data = responseobj.json()
@@ -169,7 +170,7 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
     Returns a request response object
     """
 
-	# Henter info om server, brukernavn etc
+    # Henter info om server, brukernavn etc
     credentials = lescredfil( credfile='credentials.json', server=server)
     
     # Har vi angitt proxy? 
@@ -193,7 +194,7 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
             stopstrings.append( ','.join( str(px) for px in cords.pop(0))  )
         
         params['stops'] = ';'.join( stopstrings)
-        
+
     if credentials['auth']:
         r = requests.get( credentials['url'], auth=credentials['auth'], 
                          params=params, proxies=proxies)

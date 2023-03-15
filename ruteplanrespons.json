@@ -1,0 +1,1072 @@
+{
+    "directions": [
+        {
+            "features": [
+                {
+                    "attributes": {
+                        "ETA": 0,
+                        "length": 0.292,
+                        "maneuverType": "esriDMTDepart",
+                        "roadFeatures": [
+                            {
+                                "attributeType": "length",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "MaxLength",
+                                        "value": "19.5"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "weight",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "50"
+                                    }
+                                ]
+                            }
+                        ],
+                        "text": "{K17059} Start on Storgata",
+                        "time": 33
+                    },
+                    "compressedGeometry": "+0+1+1+34+p22sk+jq53s8-io-io-1rc-1ug-49g-2to-ls-cg-5f0-3mo-4ck-2kc-2to-1l4-3dc-1ug|+34+ot-7-u-1s+0-3o+u-1i-u"
+                },
+                {
+                    "attributes": {
+                        "ETA": 0,
+                        "length": 0.408,
+                        "maneuverType": "esriDMTSharpRight",
+                        "roadFeatures": [
+                            {
+                                "attributeType": "length",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "MaxLength",
+                                        "value": "19.5"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "weight",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "50"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "height",
+                                "distanceAlongSegment": 368.21535528792657,
+                                "id": null,
+                                "location": [
+                                    {
+                                        "easting": 262333,
+                                        "northing": 6649724,
+                                        "srs": "EPSG:25833"
+                                    }
+                                ],
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "4.6"
+                                    }
+                                ]
+                            }
+                        ],
+                        "text": "{R162} Make a sharp right on to Rv162",
+                        "time": 54
+                    },
+                    "compressedGeometry": "+0+1+1+34+p1b8c+jq4k20-9c+1es-1es+340-2kc+4m0-9c+cg-9c+io-24o+1ug-21k+1ug-68+34-fk-68-68+v8-49g+3ps-s4+io-49g+1rc-438+1es-p0+68-cg+34-34+0-ls+68-io+34-1ug+cg-cg+34|+34+gi+1i+2g+42+0+k+1s+18+a-1s+u+4m+a+k+5u+a+a+a+u+18+2g+k"
+                },
+                {
+                    "attributes": {
+                        "ETA": 0,
+                        "length": 0.042,
+                        "maneuverType": "esriDMTSharpLeft",
+                        "roadFeatures": [
+                            {
+                                "attributeType": "length",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "MaxLength",
+                                        "value": "19.5"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "weight",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "50"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "vegloggen:Midlertidig stengt",
+                                "distanceAlongSegment": 21.005951537600005,
+                                "id": "NPRA_HBT_10-09-2021.186",
+                                "location": [
+                                    {
+                                        "easting": 262274,
+                                        "northing": 6649732.5,
+                                        "srs": "EPSG:25833"
+                                    }
+                                ],
+                                "values": [
+                                    {
+                                        "key": "RECORD_ID",
+                                        "value": "22847899-3a2a-4db9-bf84-685709954469_1"
+                                    },
+                                    {
+                                        "key": "SITUATION_ID",
+                                        "value": "NPRA_HBT_10-09-2021.186"
+                                    },
+                                    {
+                                        "key": "COUNTY_NUMBER",
+                                        "value": "3"
+                                    },
+                                    {
+                                        "key": "ROAD_NUMBER",
+                                        "value": "R162"
+                                    },
+                                    {
+                                        "key": "OVERALL_START_TIME",
+                                        "value": "2021-09-12T22:00:00Z"
+                                    },
+                                    {
+                                        "key": "OVERALL_END_TIME",
+                                        "value": "2023-12-31T22:00:00Z"
+                                    },
+                                    {
+                                        "key": "DESCRIPTION",
+                                        "value": "Vegarbeid, vegen er stengt.|Omkjøring er skiltet"
+                                    },
+                                    {
+                                        "key": "LOCATION_DESCRIPTION",
+                                        "value": "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo, i retning mot Filipstad"
+                                    },
+                                    {
+                                        "key": "RECORD_SECONDARY_TYPE",
+                                        "value": "roadClosed"
+                                    },
+                                    {
+                                        "key": "NUMPERIODS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "key": "ISACTIVEINPERIOD",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "key": "NvdbReferenceId",
+                                        "value": "625986"
+                                    }
+                                ]
+                            }
+                        ],
+                        "text": "{R162} Make a sharp left on to Rv162",
+                        "time": 3
+                    },
+                    "compressedGeometry": "+0+1+1+34+p0ens+jq5bsg-438+34|+34+1dk+50"
+                },
+                {
+                    "attributes": {
+                        "ETA": 0,
+                        "length": 1.08,
+                        "maneuverType": "esriDMTStraight",
+                        "roadFeatures": [
+                            {
+                                "attributeType": "length",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "MaxLength",
+                                        "value": "19.5"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "weight",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "50"
+                                    }
+                                ]
+                            }
+                        ],
+                        "text": "{R162} Continue on Rv162",
+                        "time": 86
+                    },
+                    "compressedGeometry": "+0+1+1+34+p0akk+jq5bvk-6ts+34-9c0-18k-24o-68-30s+9c-24o+ls-v8+fk-9c+68-4ck+2to-34+34-34+34-1i0+15g-2h8+3a8-io+s4-9c+9c-9c+cg-7ac+9i8-15g+1bo-v8+cg-a50-34-12c-34-p0-io-9c-9c-2to-46c-1l4-2h8-1l4-2kc-2b0-3a8-io-v8-4vc-7gk-2b0-340-cg-cg-24o-1rc-15g-io-fk-34-ls+9c-15g-34-cg-34-cg-io-68-s4+34-cg|+34+1ik-7g-c6-1s+a+18+26+0+6s+0+0+k+1i+0+0+0+2q+0+a-2q-k+0+a-1i-u-a-k-a-2q+k+0+1i+k+1i+a+1i+k+a-k-k"
+                },
+                {
+                    "attributes": {
+                        "ETA": 0,
+                        "length": 0.848,
+                        "maneuverType": "esriDMTStraight",
+                        "roadFeatures": [
+                            {
+                                "attributeType": "length",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "MaxLength",
+                                        "value": "19.5"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "weight",
+                                "distanceAlongSegment": 0,
+                                "id": null,
+                                "location": null,
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "50"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "height",
+                                "distanceAlongSegment": 230.75576027496956,
+                                "id": null,
+                                "location": [
+                                    {
+                                        "easting": 261310,
+                                        "northing": 6649483,
+                                        "srs": "EPSG:25833"
+                                    }
+                                ],
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "5"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "height",
+                                "distanceAlongSegment": 308.8998957297916,
+                                "id": null,
+                                "location": [
+                                    {
+                                        "easting": 261251,
+                                        "northing": 6649433,
+                                        "srs": "EPSG:25833"
+                                    }
+                                ],
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "5.8"
+                                    }
+                                ]
+                            },
+                            {
+                                "attributeType": "height",
+                                "distanceAlongSegment": 308.8998957297916,
+                                "id": null,
+                                "location": [
+                                    {
+                                        "easting": 261251,
+                                        "northing": 6649433,
+                                        "srs": "EPSG:25833"
+                                    }
+                                ],
+                                "values": [
+                                    {
+                                        "key": "type",
+                                        "value": "5.8"
+                                    }
+                                ]
+                            }
+                        ],
+                        "text": "{R162} In roundabout, take second exit onto Rv162",
+                        "time": 64
+                    },
+                    "compressedGeometry": "+0+1+1+34+otql8+jq52mo-io+0-1ug-s4-2to-1l4-3gg-27s-cg-fk-9c-ls+12c-3ps+cg-p0+68-s4-9c-cg-2to-2kc-p0-ls-34-34-12c-s4-15g-v8-fk-cg-1l4-1bo-1bo-15g+0-34-340-2h8-1l4-1es-18k-12c-21k-1l4-1o8-1es-340-2ng-v8-18k-p0-1bo-46c-3jk-1ug-1l4-fk-cg-9c-68-2kc-1i0-1l4-p0-2qk-s4-3jk+34-2e4+9c-374+io-ls+9c-3jk+p0-1bo+68|+34+198-18+k-1s-5a-k-a-9c-18-u-u-26-18-a-18-26-k-18-u-a-1s+u+18+2g+2g+3o+u+u-1i-2q+0-a-26-18-18-1i+a-k+0+18+9"
+                },
+                {
+                    "attributes": {
+                        "ETA": 0,
+                        "length": 0,
+                        "maneuverType": "esriDMTStop",
+                        "roadFeatures": null,
+                        "text": "{R162} Arrive on Rv162",
+                        "time": 0
+                    },
+                    "compressedGeometry": "+0+1+1+34+ort1c+jq3q5s|+34+at"
+                }
+            ],
+            "routeId": 0,
+            "routeName": "Rv162",
+            "summary": {
+                "envelope": {
+                    "xmax": 262829,
+                    "xmin": 260803,
+                    "ymax": 6649946,
+                    "ymin": 6649200
+                },
+                "statistics": [
+                    {
+                        "key": "MeterFerry",
+                        "value": 0
+                    },
+                    {
+                        "key": "toll_small",
+                        "value": 0
+                    },
+                    {
+                        "key": "toll_large",
+                        "value": 0
+                    },
+                    {
+                        "key": "toll_small_no_discount",
+                        "value": 0
+                    },
+                    {
+                        "key": "toll_large_no_discount",
+                        "value": 0
+                    },
+                    {
+                        "key": "FerryCount",
+                        "value": 0
+                    },
+                    {
+                        "key": "TollCount",
+                        "value": 0
+                    },
+                    {
+                        "key": "DistanceInZeroEmissionZone",
+                        "value": 0
+                    }
+                ],
+                "totalDriveTime": 4.016666666666667,
+                "totalLength": 2670,
+                "totalTime": 4.016666666666667
+            }
+        }
+    ],
+    "error": null,
+    "routes": {
+        "features": [
+            {
+                "attributes": {
+                    "Name": null,
+                    "ObjectID": 0,
+                    "Shape_Length": 2670,
+                    "Total_DriveTime tourist": 0,
+                    "Total_Meters": 2670,
+                    "Total_Minutes": 4.016666666666667,
+                    "Total_Toll_Without_Discount large": 0,
+                    "Total_Toll_Without_Discount small": 0,
+                    "Total_Toll large": 0,
+                    "Total_Toll small": 0,
+                    "attributes": [
+                        {
+                            "key": "MeterFerry",
+                            "value": 0
+                        },
+                        {
+                            "key": "FerryCount",
+                            "value": 0
+                        },
+                        {
+                            "key": "TollCount",
+                            "value": 0
+                        },
+                        {
+                            "key": "DistanceInZeroEmissionZone",
+                            "value": 0
+                        }
+                    ]
+                },
+                "geometry": {
+                    "paths": [
+                        [
+                            [
+                                262829,
+                                6649650,
+                                7.97
+                            ],
+                            [
+                                262823,
+                                6649644,
+                                7.9
+                            ],
+                            [
+                                262804,
+                                6649624,
+                                7.6
+                            ],
+                            [
+                                262760,
+                                6649594,
+                                7
+                            ],
+                            [
+                                262753,
+                                6649590,
+                                7
+                            ],
+                            [
+                                262697,
+                                6649552,
+                                5.8
+                            ],
+                            [
+                                262652,
+                                6649525,
+                                6.1
+                            ],
+                            [
+                                262622,
+                                6649508,
+                                5.6
+                            ],
+                            [
+                                262587,
+                                6649488,
+                                5.3
+                            ],
+                            [
+                                262584,
+                                6649503,
+                                5.8
+                            ],
+                            [
+                                262569,
+                                6649535,
+                                6.6
+                            ],
+                            [
+                                262542,
+                                6649583,
+                                7.9
+                            ],
+                            [
+                                262539,
+                                6649587,
+                                7.9
+                            ],
+                            [
+                                262536,
+                                6649593,
+                                8.1
+                            ],
+                            [
+                                262514,
+                                6649613,
+                                8.7
+                            ],
+                            [
+                                262493,
+                                6649633,
+                                9.1
+                            ],
+                            [
+                                262491,
+                                6649634,
+                                9.2
+                            ],
+                            [
+                                262486,
+                                6649632,
+                                8.6
+                            ],
+                            [
+                                262484,
+                                6649642,
+                                8.9
+                            ],
+                            [
+                                262440,
+                                6649681,
+                                10.4
+                            ],
+                            [
+                                262431,
+                                6649687,
+                                10.5
+                            ],
+                            [
+                                262387,
+                                6649706,
+                                10.7
+                            ],
+                            [
+                                262345,
+                                6649721,
+                                12.6
+                            ],
+                            [
+                                262337,
+                                6649723,
+                                12.7
+                            ],
+                            [
+                                262333,
+                                6649724,
+                                12.8
+                            ],
+                            [
+                                262332,
+                                6649724,
+                                12.9
+                            ],
+                            [
+                                262325,
+                                6649726,
+                                13.2
+                            ],
+                            [
+                                262319,
+                                6649727,
+                                13.6
+                            ],
+                            [
+                                262299,
+                                6649731,
+                                14.4
+                            ],
+                            [
+                                262295,
+                                6649732,
+                                14.6
+                            ],
+                            [
+                                262253,
+                                6649733,
+                                16.2
+                            ],
+                            [
+                                262182,
+                                6649734,
+                                13.8
+                            ],
+                            [
+                                262086,
+                                6649721,
+                                9.9
+                            ],
+                            [
+                                262064,
+                                6649719,
+                                9.3
+                            ],
+                            [
+                                262033,
+                                6649722,
+                                9.4
+                            ],
+                            [
+                                262011,
+                                6649729,
+                                9.8
+                            ],
+                            [
+                                262001,
+                                6649734,
+                                10.5
+                            ],
+                            [
+                                261998,
+                                6649736,
+                                10.5
+                            ],
+                            [
+                                261953,
+                                6649766,
+                                12.7
+                            ],
+                            [
+                                261952,
+                                6649767,
+                                12.7
+                            ],
+                            [
+                                261951,
+                                6649768,
+                                12.7
+                            ],
+                            [
+                                261935,
+                                6649780,
+                                12.9
+                            ],
+                            [
+                                261909,
+                                6649814,
+                                13.4
+                            ],
+                            [
+                                261903,
+                                6649823,
+                                13.4
+                            ],
+                            [
+                                261900,
+                                6649826,
+                                13.4
+                            ],
+                            [
+                                261897,
+                                6649830,
+                                13.4
+                            ],
+                            [
+                                261822,
+                                6649928,
+                                14.3
+                            ],
+                            [
+                                261810,
+                                6649942,
+                                14.3
+                            ],
+                            [
+                                261800,
+                                6649946,
+                                14.4
+                            ],
+                            [
+                                261696,
+                                6649945,
+                                13.5
+                            ],
+                            [
+                                261685,
+                                6649944,
+                                13.3
+                            ],
+                            [
+                                261677,
+                                6649938,
+                                13.3
+                            ],
+                            [
+                                261674,
+                                6649935,
+                                13.4
+                            ],
+                            [
+                                261644,
+                                6649892,
+                                12.9
+                            ],
+                            [
+                                261627,
+                                6649866,
+                                12.6
+                            ],
+                            [
+                                261610,
+                                6649839,
+                                12.5
+                            ],
+                            [
+                                261586,
+                                6649805,
+                                12.3
+                            ],
+                            [
+                                261580,
+                                6649795,
+                                12.2
+                            ],
+                            [
+                                261529,
+                                6649718,
+                                11.3
+                            ],
+                            [
+                                261505,
+                                6649686,
+                                11.5
+                            ],
+                            [
+                                261501,
+                                6649682,
+                                11.5
+                            ],
+                            [
+                                261479,
+                                6649663,
+                                12
+                            ],
+                            [
+                                261467,
+                                6649657,
+                                12.2
+                            ],
+                            [
+                                261462,
+                                6649656,
+                                12.7
+                            ],
+                            [
+                                261455,
+                                6649659,
+                                12.8
+                            ],
+                            [
+                                261443,
+                                6649658,
+                                13.3
+                            ],
+                            [
+                                261439,
+                                6649657,
+                                13.5
+                            ],
+                            [
+                                261435,
+                                6649651,
+                                13.6
+                            ],
+                            [
+                                261433,
+                                6649642,
+                                13.4
+                            ],
+                            [
+                                261434,
+                                6649638,
+                                13.2
+                            ],
+                            [
+                                261428,
+                                6649638,
+                                12.8
+                            ],
+                            [
+                                261408,
+                                6649629,
+                                13
+                            ],
+                            [
+                                261378,
+                                6649612,
+                                12.4
+                            ],
+                            [
+                                261342,
+                                6649589,
+                                10.7
+                            ],
+                            [
+                                261338,
+                                6649584,
+                                10.5
+                            ],
+                            [
+                                261335,
+                                6649577,
+                                10.4
+                            ],
+                            [
+                                261346,
+                                6649538,
+                                7.4
+                            ],
+                            [
+                                261350,
+                                6649530,
+                                7
+                            ],
+                            [
+                                261352,
+                                6649521,
+                                6.7
+                            ],
+                            [
+                                261349,
+                                6649517,
+                                6.4
+                            ],
+                            [
+                                261319,
+                                6649490,
+                                5.7
+                            ],
+                            [
+                                261311,
+                                6649483,
+                                5.3
+                            ],
+                            [
+                                261310,
+                                6649482,
+                                5.2
+                            ],
+                            [
+                                261299,
+                                6649473,
+                                4.8
+                            ],
+                            [
+                                261287,
+                                6649463,
+                                4.1
+                            ],
+                            [
+                                261282,
+                                6649459,
+                                3.9
+                            ],
+                            [
+                                261265,
+                                6649445,
+                                3.5
+                            ],
+                            [
+                                261251,
+                                6649433,
+                                3.2
+                            ],
+                            [
+                                261251,
+                                6649432,
+                                3.1
+                            ],
+                            [
+                                261219,
+                                6649406,
+                                2.5
+                            ],
+                            [
+                                261202,
+                                6649391,
+                                2.8
+                            ],
+                            [
+                                261189,
+                                6649380,
+                                3.2
+                            ],
+                            [
+                                261168,
+                                6649363,
+                                4
+                            ],
+                            [
+                                261150,
+                                6649348,
+                                4.8
+                            ],
+                            [
+                                261118,
+                                6649320,
+                                6
+                            ],
+                            [
+                                261108,
+                                6649307,
+                                6.3
+                            ],
+                            [
+                                261100,
+                                6649293,
+                                6.6
+                            ],
+                            [
+                                261057,
+                                6649256,
+                                6.1
+                            ],
+                            [
+                                261037,
+                                6649239,
+                                5.2
+                            ],
+                            [
+                                261032,
+                                6649235,
+                                5.2
+                            ],
+                            [
+                                261029,
+                                6649233,
+                                5.1
+                            ],
+                            [
+                                261002,
+                                6649217,
+                                4.4
+                            ],
+                            [
+                                260985,
+                                6649209,
+                                4
+                            ],
+                            [
+                                260956,
+                                6649200,
+                                3.6
+                            ],
+                            [
+                                260919,
+                                6649201,
+                                3.1
+                            ],
+                            [
+                                260894,
+                                6649204,
+                                3.2
+                            ],
+                            [
+                                260861,
+                                6649210,
+                                3
+                            ],
+                            [
+                                260854,
+                                6649213,
+                                3
+                            ],
+                            [
+                                260817,
+                                6649221,
+                                3.4
+                            ],
+                            [
+                                260803,
+                                6649223,
+                                3.49
+                            ]
+                        ]
+                    ]
+                },
+                "geometrysimple": null,
+                "nvdbreferences": [
+                    {
+                        "direction": 2,
+                        "fromrellen": 0.37648714,
+                        "reflinkoid": "605474",
+                        "torellen": 0.720870815557227
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0.68519209,
+                        "reflinkoid": "625521",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 2,
+                        "fromrellen": 0,
+                        "reflinkoid": "626953",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "625524",
+                        "torellen": 0.94874978
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "625983",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0.00837852,
+                        "reflinkoid": "625977",
+                        "torellen": 0.69393384
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "2585041",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "2585040",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0.71576302,
+                        "reflinkoid": "625977",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0.97181215,
+                        "reflinkoid": "625517",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "625529",
+                        "torellen": 0.352951
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "625518",
+                        "torellen": 0.19111468
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "2590170",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "2590174",
+                        "torellen": 1
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0.21690259,
+                        "reflinkoid": "625518",
+                        "torellen": 0.89546435
+                    },
+                    {
+                        "direction": 1,
+                        "fromrellen": 0,
+                        "reflinkoid": "625978",
+                        "torellen": 0.5715753022926765
+                    }
+                ]
+            }
+        ]
+    }
+}

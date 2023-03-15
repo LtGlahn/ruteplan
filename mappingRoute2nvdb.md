@@ -1,6 +1,8 @@
 # Mapping routing data to NVDB road network
  
-The problem: Data for routing applications are interested in the topology level _"Kjørebane" (KB) - where the cars drive"_, 
+## The problem: 
+
+Data for routing applications are interested in the topology level _"Kjørebane" (KB) - where the cars drive"_, 
 whereas most 
 data in NVDB exists on the topology level _"Vegtrasé (VT) - where you'll find NVDB data"_. Typically, you have two  _"Kjørebane"_ to describe the physical reality of two oposing trafic flows. Right between those is the imaginary _"Vegtrasé"_. Please consult these resoruces for a more thorough explanation: 
 
@@ -12,9 +14,15 @@ A simple, two lane road is NOT modelled with separate _"Kjørebane"_ (KB) topolo
 
 Perhaps it is best to think of these as valid, but alternative ways of modelling any particular road. In NVDB, we can choose between these two models
   * The simples model needs only one link sequence to model the road and traffic flow, at the VT topology level. 
-  * The more sophisticated model needs three link sequences: One at the VT topology level, and then one for each traffic flow at the KB level. 
+  * The more sophisticated model needs three link sequences in a hierarchy: One at the VT topology level, and then one for each traffic flow at the underlying KB level. The KB links will have a relationship to the overlying VT link.  
 
 Both these models are used extensively in NVDB. This has caused considerable pain and confusion for consumers of NVDB data, in particular when you have to switch between these two representations as you traverse the road network. 
+
+## Solution
+
+1. Download NVDB road data. All road links at the _"Kjørebane"_ topology level will have a reference to the associated _"Vegtrasé"_ through the `superstedfesting` element, identifying which part of the _"Vegtrasé"_ link sequence that corresponds to each  _"Kjørebane"_ link.   
+1. Using NVDB network data to identify which links in the _ruteplan_ data that is on the _"Vegtrasé"_ topology level, and which that are on the _"Kjørebane"_ level.
+1. Construct a mapping from _"Kjørebane"_ to _"Vegtrasé"_ topology level for _ruteplan_ data by combining the NVDB road data with the _ruteplan_ data. 
 
 # Terminology 
 
@@ -38,7 +46,7 @@ We start with a 2.7km long route in from our routing application, from Storgata 
 ![Route from our routing application](./pics/ruteforslag.png)
 
 
-Here's a particular link sequence at the  uppermost topology level "Vegtrasé", which partly overlaps with our rote. The ink sequence  625517 is part of Rv162, running from east to west, starting approximately north of Oslo Central station 
+Here's a particular link sequence at the  uppermost topology level "Vegtrasé", which partly overlaps our rote. The ink sequence  625517 is part of Rv162, running from east to west, starting approximately north of Oslo Central station 
 and forming a nice curve ending northeast of Stortinget. This is part of the "Ring 1" road system encirkling Oslo city center. 
 
 ![Vegtrase link sequence 625517](./pics/roadlink625517.png)

@@ -168,6 +168,32 @@ Translating the "ruteplan" lingo into NVDB speak, we have
 So the above ruteplan reflinkoid-example translates to the text string `0.34306253-0.77669617@625517`. The complete text string for our 2.7km long route is 
 
 ```
-0.37648714-0.72087082@605474,0.68519209-1@625521,0.71230154-1.0@625522,0-0.94874978@625524,0.94874978-1.0@625524,0.34306253-0.77669617@625517,0.7778511-0.78431368@625517,0.78431368-0.78885039@625517,0.78885039-0.97181215@625517,0.97181215-1@625517,0-0.352951@625529,0-0.19111468@625518,0.19111468-0.20169338@625518,0.21271608-0.21690259@625518,0.21690259-0.89546435@625518,0.89546435-0.958216@625518
+0.37648714-0.72087082@605474,0.68519209-1@625521,0.71230154-1.0@625522,0-0.94874978@625524,
+0.94874978-1.0@625524,0.34306253-0.77669617@625517,0.7778511-0.78431368@625517,
+0.78431368-0.78885039@625517,0.78885039-0.97181215@625517,0.97181215-1@625517,
+0-0.352951@625529,0-0.19111468@625518,0.19111468-0.20169338@625518,
+0.21271608-0.21690259@625518,0.21690259-0.89546435@625518,0.89546435-0.958216@625518
 ```
 
+And the complete URL for fetching speed limits (object type 105 Fartsgrense) from NVDB api LES is https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/105?veglenkesekvens='0.37648714-0.72087082@605474,0.68519209-1@625521,0.71230154-1.0@625522,0-0.94874978@625524,0.94874978-1.0@625524,0.34306253-0.77669617@625517,0.7778511-0.78431368@625517,0.78431368-0.78885039@625517,0.78885039-0.97181215@625517,0.97181215-1@625517,0-0.352951@625529,0-0.19111468@625518,0.19111468-0.20169338@625518,0.21271608-0.21690259@625518,0.21690259-0.89546435@625518,0.89546435-0.958216@625518'&inkluder=alle
+
+Our speed limit data (thick yellow) will have somewhat larger extent than our ruoting data (thin red), here's a detailed view of our start point. Speed limit data extend all the way to the junction Hausmanns gate, 
+whereas our route starts 15 meters away from that junction. 
+
+![Map showing speed limit and car routing data](./pics/speedlimit_storgata51.png)
+
+Here's an example of how switching between the two different methods of modelling road network, _single VT only-model_ versus _VT + KB combination model_, creates weird kinks and artefacts. 
+
+![Kinks due to transitions between VTKB and VT plus KB](./pics/kinks.png)
+
+Here's another example that your query to NVDB api LES will return the extent of the NVDB objects that matches your query - and **NOT matched exactly** to your detailed positional query. 
+
+![Speed limit data extending slightly larger than the ruteplan data](./pics/rundkjoring.png)
+
+However, the parameter `segmentering=true` (which is the default) will exclude some results that are at totally different link sequences. Here's what it looks like if you set `segmentering=false`: 
+
+![Speed limit segmentering false](./pics/fart-segmenteringFalse.png)
+
+And here with `segmentering=true` 
+
+![Speed limit segmentering true](./pics/fart-segmenteringTrue.png)

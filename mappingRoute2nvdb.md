@@ -60,7 +60,7 @@ Note that the link sequence 625977 is not continuous: There is a 25m gap at the 
 
 ![Detail of link sequence 625977](./pics/missing625977.png)
 
-Here's a detailed view of both 625977 (blue, at the KB level) and 625517 (red, at the VT level). Note how the KB 625977 (blue) is a reasolable good representation of cars would actually drive, whereas the VT 625517 (red) more closely follows the center line / center barriers. 
+Here's a detailed view of both 625977 (blue, at the KB level) and 625517 (red, at the VT level). Note how the KB 625977 (blue) is a reasonable good representation of cars would actually drive, whereas the VT 625517 (red) more closely follows the center line / center barriers. 
 
 ![Road overview of KB and VT topology in St. Olavs gate, Oslo](./pics/roadlinks_StOlavsgt.png)
 
@@ -87,29 +87,29 @@ Tabulating the individual links for the _"Kjørebane"_ link sequence [/vegnett/v
   * This _"Kjørebane"_ link is related to **a part of** _"Vegtrasé"_ link sequence 625517 (`super_veglenkesekvensid`), starting at position 0.338228 (`super_startposisjon`) and ending at 971812 (`super_sluttposisjon`). 
     * So to transfer from _Kjørebane_ to _Vegtrasé_, some calculation is involved to get the correct linear position.
 
-| topologinivå | veglenkesekvensid | startposisjon | sluttposisjon | super_veglenkesekvensid | super_startposisjon | super_sluttposisjon | sluttdato | 
-|------------|--------|--------- |------------|---------|-----------|----------|---------|
-| Kjørebane  | 625977 | **0** | _0.00837852_   | 625517  | **0.338228**  | 0.343063 | |
-| Kjørebane  | 625977 | _0.00837852_ | 0.024945   | 625517  | 0.343063  | 0.353239 | |
-| Kjørebane  | 625977 | 0.024945 | 0.043991   | 625517  | 0.353239  | 0.365024 | |
-| Kjørebane  | 625977 | 0.043991 | 0.047856   | 625517  | 0.365024  | 0.367415 | | 
-| Kjørebane  | 625977 | 0.047856 | 0.086954   | 625517  | 0.367415  | 0.392232 | |
-| Kjørebane  | 625977 | 0.086954 | 0.323563   | 625517  | 0.392232  | 0.542417 | |
-| Kjørebane  | 625977 | 0.323563 | 0.326340   | 625517  | 0.542417  | 0.544170 | |
-| Kjørebane  | 625977 | 0.326340 | 0.376621   | 625517  | 0.544170  | 0.575918 | |
-| Kjørebane  | 625977 | 0.376621 | 0.379417   | 625517  | 0.575918  | 0.577682 | |
-| Kjørebane  | 625977 | 0.379417 | 0.437617   | 625517  | 0.577682  | 0.614389 | |
-| Kjørebane  | 625977 | 0.437617 | 0.451707   | 625517  | 0.614389  | 0.623128 | |
-| Kjørebane  | 625977 | 0.451707 | 0.456277   | 625517  | 0.623128  | 0.626042 | |
-| Kjørebane  | 625977 | 0.456277 | 0.597619   | 625517  | 0.626042  | 0.716154 | |
-| Kjørebane  | 625977 | 0.597619 | 0.693934   | 625517  | 0.716154  | 0.777851 | |
-| ~~Kjørebane~~  | ~~625977~~ | ~~0.693934~~ | ~~0.706052~~   | 625517  | 0.776696  | 0.784314 | **2014-01-01** |
-| ~~Kjørebane~~  | ~~625977~~ | ~~0.706052~~ | ~~0.715763~~   | 625517  | 0.784314  | 0.790520 | **2014-01-01** |
-| Kjørebane  | 625977 | 0.715763 | 0.764746   | 625517  | 0.788850  | 0.821825 | |
-| Kjørebane  | 625977 | 0.764746 | 0.861270   | 625517  | 0.821825  | 0.882374 | |
-| Kjørebane  | 625977 | 0.861270 | 0.872393   | 625517  | 0.882374  | 0.889889 | |
-| Kjørebane  | 625977 | 0.872393 | 0.995419   | 625517  | 0.889889  | 0.966778 | |
-| Kjørebane  | 625977 | 0.995419 | **1**      | 625517  | 0.966778  | **0.971812** | |
+| veglenkesekvensid | startposisjon | sluttposisjon | super_veglenkesekvensid | super_startposisjon | super_sluttposisjon | sluttdato | 
+|--------|--------- |------------|---------|-----------|----------|---------|
+| 625977 | **0** | _0.00837852_   | 625517  | **0.338228**  | 0.343063 | |
+| 625977 | _0.00837852_ | 0.024945   | 625517  | 0.343063  | 0.353239 | |
+| 625977 | 0.024945 | 0.043991   | 625517  | 0.353239  | 0.365024 | |
+| 625977 | 0.043991 | 0.047856   | 625517  | 0.365024  | 0.367415 | | 
+| 625977 | 0.047856 | 0.086954   | 625517  | 0.367415  | 0.392232 | |
+| 625977 | 0.086954 | 0.323563   | 625517  | 0.392232  | 0.542417 | |
+| 625977 | 0.323563 | 0.326340   | 625517  | 0.542417  | 0.544170 | |
+| 625977 | 0.326340 | 0.376621   | 625517  | 0.544170  | 0.575918 | |
+| 625977 | 0.376621 | 0.379417   | 625517  | 0.575918  | 0.577682 | |
+| 625977 | 0.379417 | 0.437617   | 625517  | 0.577682  | 0.614389 | |
+| 625977 | 0.437617 | 0.451707   | 625517  | 0.614389  | 0.623128 | |
+| 625977 | 0.451707 | 0.456277   | 625517  | 0.623128  | 0.626042 | |
+| 625977 | 0.456277 | 0.597619   | 625517  | 0.626042  | 0.716154 | |
+| 625977 | 0.597619 | 0.693934   | 625517  | 0.716154  | 0.777851 | |
+| ~~625977~~ | ~~0.693934~~ | ~~0.706052~~   | 625517  | 0.776696  | 0.784314 | **2014-01-01** |
+| ~~625977~~ | ~~0.706052~~ | ~~0.715763~~   | 625517  | 0.784314  | 0.790520 | **2014-01-01** |
+| 625977 | 0.715763 | 0.764746   | 625517  | 0.788850  | 0.821825 | |
+| 625977 | 0.764746 | 0.861270   | 625517  | 0.821825  | 0.882374 | |
+| 625977 | 0.861270 | 0.872393   | 625517  | 0.882374  | 0.889889 | |
+| 625977 | 0.872393 | 0.995419   | 625517  | 0.889889  | 0.966778 | |
+| 625977 | 0.995419 | **1**      | 625517  | 0.966778  | **0.971812** | |
 
 
 

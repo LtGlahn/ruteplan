@@ -194,6 +194,6 @@ However, the parameter `segmentering=true` (which is the default) will exclude s
 
 ![Speed limit segmentering false](./pics/fart-segmenteringFalse.png)
 
-And here with `segmentering=true` 
+And here with `segmentering=true` (the default)
 
 ![Speed limit segmentering true](./pics/fart-segmenteringTrue.png)

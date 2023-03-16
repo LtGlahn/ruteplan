@@ -22,7 +22,7 @@ Both these models are used extensively in NVDB. This has caused considerable pai
 
 1. Download NVDB road data. All road links at the _"Kjørebane"_ topology level will have a reference to the associated _"Vegtrasé"_ through the `superstedfesting` element, identifying which part of the _"Vegtrasé"_ link sequence that corresponds to each  _"Kjørebane"_ link.   
 1. Using NVDB network data to identify which links in the _ruteplan_ data that is on the _"Vegtrasé"_ topology level, and which that are on the _"Kjørebane"_ level.
-1. Construct a mapping from _"Kjørebane"_ to _"Vegtrasé"_ topology level for _ruteplan_ data by combining the NVDB road data with the _ruteplan_ data. 
+1. Construct a mapping from _"Kjørebane"_ to _"Vegtrasé"_ topology level for _ruteplan_ data by combining the NVDB road data with the _ruteplan_ data, interpolating the linear position floating 
 
 # Terminology 
 
@@ -36,6 +36,7 @@ In NVDB api LES, you'll find this model in the composition of the REST api URL `
   * A point is described as a single floating point value at the particular link sequence ID, example `0.5@625977`. 
   * A section of the road is described as a range of floating point numbers at that particular link sequence ID, or more likely a list
   of such ranges. Example `0-0.37@625977` or a list: `0.37648714-0.72087082@605474,0.68519209-1@625521,0.71230154-1.0@625522`
+  * These floating point values are valid with 8 decimal presion (i.e. 8 digits after decimal separator, 0 = 0.00000000). 
 
 The linear referencing system can be used to query NVDB for data, se [documentation](https://nvdbapiles-v3.atlas.vegvesen.no/dokumentasjon/openapi/#/Vegobjekter/get_vegobjekter__vegobjekttypeid_). Please observe that the linear referencing system is oblivious to how many links there may be along any particular link sequence, and the time evolution of those links. 
 
@@ -58,6 +59,25 @@ And here's the "kjørebane" topology link sequence 625977 that extends along par
 Note that the link sequence 625977 is not continuous: There is a 25m gap at the junction St Olavs gate - Munkedamsveien. This part of 625977 has been replaced with other link sequences, and linear position  0.693934 - 0.715763 @ 625977 ceased to be valid at "sluttdato" 2014-01-01. 
 
 ![Detail of link sequence 625977](./pics/missing625977.png)
+
+Here's a detailed view of both 625977 (blue, at the KB level) and 625517 (red, at the VT level). Note how the KB 625977 (blue) is a reasolable good representation of cars would actually drive, whereas the VT 625517 (red) more closely follows the center line / center barriers. 
+
+![Road overview of KB and VT topology in St. Olavs gate, Oslo](./pics/roadlinks_StOlavsgt.png)
+
+Same view with aerial image: 
+
+![Road overview of KB and VT topology in St. Olavs gate, Oslo](./pics/flyfoto_roadlinks_StOlavsgt.png)
+
+The view from the drivers seats, traveling west at St. Olavs gate approaching junction Munkedamsveien. The VT 625517 link follows the yellow center line, whereas the KB 625977 is approximately at the white dividing lane between the two lanes. Camera position and direction 
+indicated by white arrow at miniature map below. 
+
+![Vegbilde St Olavs gate X Munkedamsveien](./pics/vegbilde_stOlavsgt.png)
+
+This is what Munkedamsveien looks like just after completing the left turn from St. Olavs gate. VT 625517 is in the middle of the lane separation barrier in left part of the picture, and KB 625977 right between the two lanes towards southwest. 
+
+![Vegbilde Munkedamsvegen mot sørvest](./pics/vegbildeMunkedamsveienSW.png)
+
+# Detailed analysis of KB 625977 mapping to VT 625517
 
 Tabulating the individual links for the _"Kjørebane"_ link sequence [/vegnett/veglenkesekvenser/625977](https://nvdbapiles-v3.atlas.vegvesen.no/vegnett/veglenkesekvenser/625977) and its relain (superstedfesting) to _"Vegtrasé"_ link sequence 625517, we in particular note: 
 
@@ -135,3 +155,19 @@ We now hav enough information to update our data with the appropriate values for
     }
 }
 ```
+
+# Fetching NVDB data along the route
+
+After mapping all NVDB links to the appropriate "superstedfesting", we are ready to query NVDB api LES for data. The syntax for querying data for veglenkesekvens is  `<startposisjon>-<sluttposisjon>@veglenkesekvens`, which is a text string where `startposisjon` and `sluttposisjon` are specified with 8 decimals precision. (You may use fewer decimals - but your data value is always evaluated down to 8 decimals, so 0.1 = 0.10000000). 
+
+Translating the "ruteplan" lingo into NVDB speak, we have  
+  * startposisjon = fromrellen _(from-position, relative length (i.e. linear position))_ 
+  * sluttposisjon = torellen _(to-position, relative length (i.e. linear position))_
+  * veglenkesekvens = reflinkoid 
+
+So the above ruteplan reflinkoid-example translates to the text string `0.34306253-0.77669617@625517`. The complete text string for our 2.7km long route is 
+
+```
+0.37648714-0.72087082@605474,0.68519209-1@625521,0.71230154-1.0@625522,0-0.94874978@625524,0.94874978-1.0@625524,0.34306253-0.77669617@625517,0.7778511-0.78431368@625517,0.78431368-0.78885039@625517,0.78885039-0.97181215@625517,0.97181215-1@625517,0-0.352951@625529,0-0.19111468@625518,0.19111468-0.20169338@625518,0.21271608-0.21690259@625518,0.21690259-0.89546435@625518,0.89546435-0.958216@625518
+```
+

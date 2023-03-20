@@ -200,3 +200,8 @@ However, the parameter `segmentering=true` (which is the default) will exclude s
 And here with `segmentering=true` (the default)
 
 ![Speed limit segmentering true](./pics/fart-segmenteringTrue.png)
+
+# Code 
+
+The python file [mappingRoute2nvdb](https://github.com/LtGlahn/ruteplan/blob/master/mappingRoute2nvdb.py) implements this 
+logic for the particular routing shown here. 

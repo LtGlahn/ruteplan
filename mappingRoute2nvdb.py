@@ -133,8 +133,26 @@ if __name__ == '__main__':
     
     # Take some precaution, if this list veglenkeposisjoner is long you need to iterate over (suitable large chunks of) this list.
     # There is an upper limit for how much text you can fit into HTTP GET query, ergo there is a limit for how many elements you can cram into 'veglenkesekvens' - parameter   
-    # For this particular example we're OK, will implement some iteration later
-    fartsgrense = pd.DataFrame(  nvdbapiv3.nvdbFagdata( 105, filter={'veglenkesekvens' : ','.join( veglenkeposisjoner )} ).to_records() )   
+    # So we'll work with chunks of the list "veglenkeposisjoner"
+    chunk_size = 25
+    chunk_pointers = list( range( 0, len( veglenkeposisjoner ), chunk_size ))
+    fartsgrense = [] # List to hold list of dictionaries from nvdbFagdata.to_records()
+
+    # Working with pointers defining chunks of our list veglenkeposisjoner
+    for pointerB, junk in enumerate( chunk_pointers ): 
+        if pointerB == len( chunk_pointers)-1: # Last item, we need to go from that pointer to the end of the list
+            fartsgrense.extend( nvdbapiv3.nvdbFagdata( 105, filter={'veglenkesekvens' : ','.join( veglenkeposisjoner[ chunk_pointers[pointerB]:] )} ).to_records() )
+            print( f"Debug: fetching fartsgrense for veglenkesekvens list item {chunk_pointers[pointerB]} - last item in list ({len(veglenkeposisjoner)} items total)  ")
+        else: 
+            fartsgrense.extend( nvdbapiv3.nvdbFagdata( 105, filter={'veglenkesekvens' : ','.join( veglenkeposisjoner[ chunk_pointers[pointerB]:chunk_pointers[pointerB+1] ] ) } ).to_records() )
+            print( f"Debug: fetching fartsgrense for veglenkesekvens list item {chunk_pointers[pointerB]} - {chunk_pointers[pointerB+1]}   ")
+
+    fartsgrense = pd.DataFrame(  fartsgrense )   
+    # Most likely, our chunk method will given us duplicates: Quering for  '0-0.4@625517' in one chunk and then '0.4-1@625517' might very well return the same object => duplicates
+    print( f"Debug: Length of fartsgrense-data before duplicate removal: {len( fartsgrense)}")
+    fartsgrense.drop_duplicates( subset=['nvdbId', 'versjon', 'veglenkesekvensid', 'startposisjon'], inplace=True  )
+    print( f"Debug: Length of fartsgrense-data AFTER duplicate removal: {len( fartsgrense)}")
+
     fartsgrense['geometry'] = fartsgrense['geometri'].apply( wkt.loads )
     fartsgrense = gpd.GeoDataFrame( fartsgrense, geometry='geometry', crs=5973 )
     fartsgrense.to_file( 'demoruteplan.gpkg', layer='fartsgrense', driver='GPKG')

@@ -10,7 +10,7 @@ content:
     "ruteplan": {
         "pw": "yourpassword",
         "user": "yourUserName",
-        "url": "https://www.vegvesen.no/ruteplan/routingservice_v1_0/routingservice/solve"
+        "url": "https://www.vegvesen.no/ws/no/vegvesen/ruteplan/routingservice_v2_0/routingservice/"
     }
 }
 

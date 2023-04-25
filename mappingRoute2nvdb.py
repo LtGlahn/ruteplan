@@ -22,6 +22,11 @@ if __name__ == '__main__':
     p1 =  wkt.loads( 'POINT(262819.18 6649657.89 )' ) # Storgata 51, Oslo 
     p2 =  wkt.loads( 'POINT(260805.98 6649240.36 )' ) # Munkedamsveien 59, Oslo
 
+    # Testcase for the switch of start- and sluttposisjon data values
+    # where startposisjon (fromrel) > sluttposisjon (torel) 
+    # p1 = wkt.loads( 'POINT(262796.12164045224 6647150.737110766 )' )
+    # p2 = wkt.loads( 'POINT(262449.76561430475 6649115.558134907 )' )
+
     # Saving the JSON response for documentation 
     response =  ruteplan.anropruteplan( coordinates = [(p1.x, p1.y), (p2.x, p2.y) ]  )
     with open( 'ruteplanrespons.json', 'w') as f: 
@@ -129,8 +134,10 @@ if __name__ == '__main__':
 
     #############################################
     # FINALLY - we have a mapping to the vegtrasé topology level, and can start to query NVDB api for data
-    veglenkeposisjoner = [ str( x['fromrellen'] ) + '-' + str( x['torellen'] ) + '@' + str( int( x['reflinkoid'] ) ) for x in    mapped_NVDBroadlinklist ]
-    
+
+    # veglenkeposisjoner = [ str( x['fromrellen'] ) + '-' + str( x['torellen'] ) + '@' + str( int( x['reflinkoid'] ) ) for x in    mapped_NVDBroadlinklist ]
+    veglenkeposisjoner = [ str( min(x['fromrellen'], x['torellen']) ) + '-' + str( max(x['fromrellen'], x['torellen']) ) + '@' + str( int( x['reflinkoid'] ) ) for x in    mapped_NVDBroadlinklist ]
+
     # Take some precaution, if this list veglenkeposisjoner is long you need to iterate over (suitable large chunks of) this list.
     # There is an upper limit for how much text you can fit into HTTP GET query, ergo there is a limit for how many elements you can cram into 'veglenkesekvens' - parameter   
     # So we'll work with chunks of the list "veglenkeposisjoner"

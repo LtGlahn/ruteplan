@@ -175,6 +175,17 @@ So the above ruteplan reflinkoid-example translates to the text string `0.343062
 0.21271608-0.21690259@625518,0.21690259-0.89546435@625518,0.89546435-0.958216@625518
 ```
 
+### Caveat: To-positions < From-positions 
+
+For obscure reasons shrouded in mystery, our production of ruteplan network data sets will sometimes switch the `fromrellen` (startposisjon) and `torellen` (sluttposisjon) values, so that `fromrellen > torellen`. Lucily, it is a simple matter to switch them back again using python `min` and `max` functions: 
+
+```python
+veglenkeposisjoner = [ str( min(x['fromrellen'], x['torellen']) ) + '-' + \
+                       str( max(x['fromrellen'], x['torellen']) ) + '@' + \
+                       str( int( x['reflinkoid'] ) ) \
+                  for x in    mapped_NVDBroadlinklist ]
+```
+
 And the complete URL for fetching speed limits (object type 105 Fartsgrense) from NVDB api LES is https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/105?veglenkesekvens='0.37648714-0.72087082@605474,0.68519209-1@625521,0.71230154-1.0@625522,0-0.94874978@625524,0.94874978-1.0@625524,0.34306253-0.77669617@625517,0.7778511-0.78431368@625517,0.78431368-0.78885039@625517,0.78885039-0.97181215@625517,0.97181215-1@625517,0-0.352951@625529,0-0.19111468@625518,0.19111468-0.20169338@625518,0.21271608-0.21690259@625518,0.21690259-0.89546435@625518,0.89546435-0.958216@625518'&inkluder=alle
 
 > For longer or more complex routes you may need to split the list of veglenkesekvens into 

@@ -155,19 +155,41 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
     return featurelist
 
 def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz', 'returnNvdbReferences' : True }, 
-                  server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)]): 
+                  server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)], **kwargs ): 
     """Fetch data from the NVDB roting API 
-    
-    ruteplanparams = dict with parameters for the routing applications. 
-    If this dict doesn't have a  "stops" element it will be populated from the 
-    coordinate list. 
 
-    coordinates = list of tuples with (x,y ) coordinates. Must have at least 
-    2 members. 
+    Please note that there are two ways  to specify the ruteplan parameters: 
+      * One method is to specify all (or a subset of) ruteplan API parameters as elements of these two keywords 
+            => 'ruteplanparams' keyword dict 
+                Each tag - value of the 'ruteplanparams' dictionary is passed directly to the ruteplan API
+
+            => 'coordinates' keyword, which is a list of 2D tuples
+
+      * The other method is to pass parameters as named keywords - example 
+            > anropruteplan( stops='277648.7,6760327.3;292465.4,6695768.8')
+        Any keyword will override the values of the "ruteplanparams" and "coordinates" keywords. 
+
+    Please consult the ruteplan API documentation for details https://labs.vegdata.no/ruteplandoc/
     
-    Server is an element in the credentials.json-file. 
+    ARGUMENTS: 
+        None 
+
+    KEYWORDS: 
+        ruteplanparams = dict with parameters for the routing applications. 
+        If this dict doesn't have a  "stops" element it will be populated from the 
+        coordinate list. 
+
+        coordinates = list of tuples with (x,y ) coordinates. Must have at least 
+        2 members. 
+        
+        Server is an element in the credentials.json-file. 
+
+        Any other keyword is passed directly to the ruteplan API. These additional 
+        keywords will override the values of the "ruteplanparams" or "coordinates" keywords
+        https://labs.vegdata.no/ruteplandoc/
     
-    Returns a request response object
+    RETURNS: 
+        Returns a request response object https://requests.readthedocs.io/en/latest/ 
     """
 
     # Henter info om server, brukernavn etc
@@ -195,6 +217,11 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
         
         params['stops'] = ';'.join( stopstrings)
 
+
+    # Any other keywords? These will override the values of the "ruteplanparams" or "coordinates" keywords
+    for key, value in kwargs.items(): 
+        params[key] = value
+
     if credentials['auth']:
         r = requests.get( credentials['url'], auth=credentials['auth'], 
                          params=params, proxies=proxies)
@@ -202,6 +229,8 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
     else: 
         r = requests.get( credentials['url'], params=params, 
                          proxies=proxies)
+
+    print( f"Ruteplan parametre: {json.dumps(params, indent=4)}")
 
     return r
 

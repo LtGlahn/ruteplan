@@ -1,3 +1,7 @@
+# Oppdatering til versjon 3 av ruteplan API 
+
+Denne koden utvikles til å hente data fra versjon 3 av ruteplan API. Den vil erstatte master-branch når tiden er moden for det. 
+
 # ruteplan
 Eksempler og div praktiske snutter for kommunikasjon med ruteplantjenesten [https://data.norge.no/data/statens-vegvesen/api-ruteplantjeneste-bil](https://data.norge.no/data/statens-vegvesen/api-ruteplantjeneste-bil)
 

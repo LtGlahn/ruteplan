@@ -56,7 +56,6 @@ def ruteplan2dict( **kwargs ):
     return data 
 
 
-
 def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
   
     try: 
@@ -87,17 +86,28 @@ def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
     return credentials
     
 
-def parseruteplan( responseobj, egenskaper={}, startvertices=None  ): 
+def parseruteplan( responseobj, egenskaper={} ): 
     """Tar responsobjekt fra ruteplantjenesten, omsetter til en 
     liste med Geojson-features. Disse kan puttes inn i en featureCollection
     eller bearbeides med annet vis. 
     
+    I ruteplan V3 er geojson brukt som datastruktur for hvert ruteforslag (inntil tre ruteforslag).
+    Hvert ruteforslag har en del overordnet statistikk (lengde, kjøretid, kostnad bompenger etc), 
+    samt hver geometribit som geojson-features. Denne funksjonen føyer informasjon fra rot-nivå til 
+    "properties" - elementet på hver enkel geojson-element. 
+
     Hvis du har andre (meta)data som du vil knytte til ruteforslaget
     kan dette sendes inn som en dict til parameteren egenskaper={'key':'val'} 
-    
-    Parameteren startvertices=N (heltall) gir starten av ruta (maks N 
-    koordinatpunkt regnet fra start). Nytting for kontroll av at startpunkt
-    er der du vil ha det
+
+    ARGUMENTS
+        response : http requests response object https://requests.readthedocs.io/en/latest/
+
+    KEYWORDS
+        egenskaper : dictionary, ekstra metadata / data som føyes til hvert enkelt geojson-element
+
+    RETURNS
+        features : list of dictionaries, liste med gejoson features. 
+
     """
     
     # Feilsituasjoner? 
@@ -112,49 +122,22 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
         raise ValueError( message)
 
     featurelist = []
-    for ii, rute in enumerate( data['routes']['features']): 
+    for ii, rute in enumerate( data['routes'] ): 
         
-        # Fjerner de egenskapene vi ikke vil ha: 
-        attributes = rute['attributes']
-        extra_attributes = attributes.pop( 'attributes')
-        attributes.pop( 'ObjectID')
-        attributes.pop('Shape_Length')
+        metadata = deepcopy( rute ) 
+        metadata.pop('features', None )
+        metadata.pop('nvdbReferenceLinks', None )
+        metadata['rutealternativNr'] = ii
+        if egenskaper: 
+            metadata.update( egenskaper )
         
-        # Lager attributtliste av de egenskapene som er igjen: 
-        egen2 = copy.deepcopy( egenskaper)
-        egen2.update(attributes)
-        
-            
-        # Parser listen med ekstra attributter
-        if extra_attributes: 
-            for val in extra_attributes:
-                egen2[val['key']] = val['value']
-            
-        # Henter litt snacks fra directions-elementet:
-        egen2['routeName'] = data['directions'][ii]['routeName']
-        
-        # Legger paa info om beste - nestbeste osv
-        egen2['rutealternativNr'] = ii
-
-        # NVDB veglenkesekvenser 
-        if 'nvdbreferences' in rute: 
-            egen2['nvdbreferences'] = rute['nvdbreferences']
-        
-        # Behandler geometri
-        if startvertices: 
-            mygeom =  geojson.LineString( rute['geometry']['paths'][0][:startvertices])
-        else: 
-            mygeom =  geojson.LineString( rute['geometry']['paths'][0])
-        
-        # Lager geojson-objekt
-        mygeojs = geojson.Feature( geometry=mygeom, properties=egen2)
-
-
-        featurelist.append( mygeojs)
+        for feature in rute['features']: 
+            feature['properties'].update( metadata )
+            featurelist.append(  feature ) 
           
     return featurelist
 
-def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz', 'returnNvdbReferences' : True }, 
+def anropruteplan( ruteplanparams={ 'ReturnFields' : ['Geometry', 'NvdbReferences'] }, 
                   server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)], **kwargs ): 
     """Fetch data from the NVDB roting API 
 
@@ -234,88 +217,3 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
 
     return r
 
-def fiksvegdata2ruteplanparams( fiksvegdataparams ): 
-    """
-    Oversetter datastruktur fra fiksvegdata (sykkelveg.no feilmelding) til ruteplan parametre
-
-    Eksempel på datastruktur fra fiksvegdata: 
-
-    ```json
-    {
-        "routeType": 0,
-        "effort": 0,
-        "locations": [
-            {
-            "easting": 236501.43,
-            "northing": 7073079.82,
-            "elevation": 0
-            },
-            {
-            "easting": 371248.035,
-            "northing": 7265105.225,
-            "elevation": 0
-            }
-        ],
-        "barriers": "GEOMETRYCOLLECTION(POLYGON((269512.75097657 7042004.4277345, 
-                                269438.70410157 7041660.638672,269920.00878907 7041242.8027345,
-                                270295.53222657 7041501.966797,269512.75097657 7042004.4277345)),
-                                POINT(264082.86718751 7017882.9970705))",
-        "language": "no",
-        "epsg": "EPSG:32633",
-        "includeGML": false,
-        "includeWKT": true,
-        "avoidTrails": false
-    }
-    ```
-
-    Som oversettes til 
-
-    ```json
-    { 
-        "route_type" : "bike", 
-        "stops" : "236501.43,7073079.82;371248.035,7265105.225" 
-        "effort": 0, 
-        "barriers" :  "GEOMETRYCOLLECTION(POLYGON((269512.75097657 7042004.4277345,
-                                269438.70410157 7041660.638672,269920.00878907 7041242.8027345,
-                                270295.53222657 7041501.966797,269512.75097657 7042004.4277345)),
-                                POINT(264082.86718751 7017882.9970705))",
-        "geometryformat" : "isoz", 
-        "avoidTrails" : false
-
-    }
-
-    """
-
-    false = False
-    true = True
-
-    assert 'locations' in fiksvegdataparams, "Må ha locations-data i fiksvegdata-parameter"
-    assert isinstance( fiksvegdataparams['locations'], list), "Ugyldig datatype for locations-feltet (liste med dict)"
-    assert isinstance( fiksvegdataparams['locations'][0], dict), "Ugyldig datatype for locations-feltet  (liste med dict)"
-    assert 'easting' in fiksvegdataparams['locations'][0], "Location-element mangler data for 'easting'"
-    assert 'northing' in fiksvegdataparams['locations'][0], "Location-element mangler data for 'northing'"
-    assert len( fiksvegdataparams['locations'] ) > 1, "Location-element må ha minst to elementer"
-    # Oversetter  [ { "easting" : x0, "northing" : y0 } ] => komma- og semikolonseparert tekststreng
-    # "x0,y0;x1,y1;x2,y2" .... 
-    stops =  ';'.join(  [ ','.join( [ str( x['easting']), str( x['northing']) ] ) 
-                    for x in fiksvegdataparams['locations'] ] )
-
-    ruteplanparams = {    "geometryformat"      : "isoz", 
-                          "avoidTrails"         : False, 
-                          "route_type"          : "bike",
-                          "avoidTrails"         : False,
-                        #   "barriers"            : "GEOMETRYCOLLECTION()", 
-                          "format"              : "json",
-                          "stops"               : stops 
-    }
-
-    # if 'barriers' in fiksvegdataparams:
-    #     ruteplanparams['barriers'] = fiksvegdataparams['barriers']
-
-    if 'effort' in fiksvegdataparams:
-        ruteplanparams['effort'] = fiksvegdataparams['effort']
-
-    if 'avoidTrails' in fiksvegdataparams:
-        ruteplanparams['avoidTrails'] = fiksvegdataparams['avoidTrails']
-
-    return ruteplanparams

@@ -1,6 +1,9 @@
 # User credentials 
 credentials.json
 
+# Personal tricks for importing NVDB api library
+STARTHER.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -43,10 +43,15 @@ if __name__ == '__main__':
     routingdata = pd.DataFrame( ruteplan.ruteplan2dict( coordinates= [(p1.x, p1.y), (p2.x, p2.y) ] ))
 
     # List of NVDB linear positions @ link sequence from ruteplan data, one per "route" element 
-    # one to three route alternatives may be provided.
-    temp = []
-    for route in data['routes']: 
-        temp.extend( route['nvdbReferenceLinks'] )    
+    # one to three route alternatives may be provided. 
+    # # Option 1: Choose all available routes: 
+    # temp = []
+    # for route in data['routes']: 
+    #     temp.extend( route['nvdbReferenceLinks'] )    
+
+    # Option 2: The optimum route only: 
+    temp = data['routes'][0]['nvdbReferenceLinks'] 
+
 
     # Rounding to 8 decimals precision for the linear positions 
     ruteplan_nvdblinks = []

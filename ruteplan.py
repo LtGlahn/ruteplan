@@ -7,11 +7,11 @@ You must have the file credentials.json in your working directory with this
 content: 
     
 {
-	"ruteplan": {
-		"pw": "yourpassword",
-		"user": "yourUserName",
-		"url": "https://www.vegvesen.no/ruteplan/routingservice_v1_0/routingservice/solve"
-	}
+    "ruteplan": {
+        "pw": "yourpassword",
+        "user": "yourUserName",
+        "url": "https://www.vegvesen.no/ws/no/vegvesen/ruteplan/routingservice_v2_0/routingservice/"
+    }
 }
 
 
@@ -21,9 +21,11 @@ content:
 import requests
 import json
 import copy
+from requests.auth import HTTPBasicAuth
+
 import geojson
 
-import STARTHER
+# import STARTHER
 import ruteplan
 from copy import deepcopy 
 
@@ -50,8 +52,7 @@ def ruteplan2dict( **kwargs ):
             data.append( props )
 
     else: 
-        print( f"Feilkode fra ruteplantjenesten {r.http_status} {r.text} ")
-
+        print( f"Feilkode fra ruteplantjenesten HTTP STATUS={r.status_code} {r.text} ")
     return data 
 
 
@@ -59,9 +60,9 @@ def ruteplan2dict( **kwargs ):
 def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
   
     try: 
-    	with open( credfile) as f:
-    		cred = json.load( f)
-		
+        with open( credfile) as f:
+            cred = json.load( f)
+        
     except FileNotFoundError: 
         print( 'You must have the file ', credfile, 'in your working dir')
         print( 'Use credentials-template.json as template for creating it')
@@ -76,10 +77,10 @@ def lescredfil( credfile = 'credentials.json', server='ruteplan' ):
         raise
         
     # Sjekker om det er oppgitt brukernavn og passord
-    test = set(['pw', 'user'])
-    if test.issubset( set(credentials)) and credentials['pw'] and \
-                                                        credentials['user']:
-        credentials['auth'] = ( credentials['user'], credentials['pw'])
+    if 'user' in credentials and 'pw' in credentials:
+        user = credentials.pop( 'user')
+        pw   = credentials.pop( 'pw')
+        credentials['auth'] = HTTPBasicAuth( user, pw )
     else: 
         credentials['auth'] = None
         
@@ -102,7 +103,7 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
     # Feilsituasjoner? 
     if not responseobj.ok: 
         message= ' '.join( [ 'Invalid response from ruteplan:', 
-                            str(r.status_code), r.reason, r.url ])
+                            str(responseobj.status_code), responseobj.reason, responseobj.url ])
         raise ValueError( message )
 
     data = responseobj.json()
@@ -154,22 +155,44 @@ def parseruteplan( responseobj, egenskaper={}, startvertices=None  ):
     return featurelist
 
 def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz', 'returnNvdbReferences' : True }, 
-                  server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)]): 
+                  server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)], **kwargs ): 
     """Fetch data from the NVDB roting API 
-    
-    ruteplanparams = dict with parameters for the routing applications. 
-    If this dict doesn't have a  "stops" element it will be populated from the 
-    coordinate list. 
 
-    coordinates = list of tuples with (x,y ) coordinates. Must have at least 
-    2 members. 
+    Please note that there are two ways  to specify the ruteplan parameters: 
+      * One method is to specify all (or a subset of) ruteplan API parameters as elements of these two keywords 
+            => 'ruteplanparams' keyword dict 
+                Each tag - value of the 'ruteplanparams' dictionary is passed directly to the ruteplan API
+
+            => 'coordinates' keyword, which is a list of 2D tuples
+
+      * The other method is to pass parameters as named keywords - example 
+            > anropruteplan( stops='277648.7,6760327.3;292465.4,6695768.8')
+        Any keyword will override the values of the "ruteplanparams" and "coordinates" keywords. 
+
+    Please consult the ruteplan API documentation for details https://labs.vegdata.no/ruteplandoc/
     
-    Server is an element in the credentials.json-file. 
+    ARGUMENTS: 
+        None 
+
+    KEYWORDS: 
+        ruteplanparams = dict with parameters for the routing applications. 
+        If this dict doesn't have a  "stops" element it will be populated from the 
+        coordinate list. 
+
+        coordinates = list of tuples with (x,y ) coordinates. Must have at least 
+        2 members. 
+        
+        Server is an element in the credentials.json-file. 
+
+        Any other keyword is passed directly to the ruteplan API. These additional 
+        keywords will override the values of the "ruteplanparams" or "coordinates" keywords
+        https://labs.vegdata.no/ruteplandoc/
     
-    Returns a request response object
+    RETURNS: 
+        Returns a request response object https://requests.readthedocs.io/en/latest/ 
     """
 
-	# Henter info om server, brukernavn etc
+    # Henter info om server, brukernavn etc
     credentials = lescredfil( credfile='credentials.json', server=server)
     
     # Har vi angitt proxy? 
@@ -193,7 +216,12 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
             stopstrings.append( ','.join( str(px) for px in cords.pop(0))  )
         
         params['stops'] = ';'.join( stopstrings)
-        
+
+
+    # Any other keywords? These will override the values of the "ruteplanparams" or "coordinates" keywords
+    for key, value in kwargs.items(): 
+        params[key] = value
+
     if credentials['auth']:
         r = requests.get( credentials['url'], auth=credentials['auth'], 
                          params=params, proxies=proxies)
@@ -201,6 +229,8 @@ def anropruteplan( ruteplanparams={ 'format' :  'json', 'geometryformat' : 'isoz
     else: 
         r = requests.get( credentials['url'], params=params, 
                          proxies=proxies)
+
+    print( f"Ruteplan parametre: {json.dumps(params, indent=4)}")
 
     return r
 

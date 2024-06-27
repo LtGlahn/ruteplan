@@ -1,8 +1,5 @@
-# Oppdatering til versjon 3 av ruteplan API 
+# ruteplan api versjon 3 
 
-Denne koden utvikles til å hente data fra versjon 3 av ruteplan API. Den vil erstatte master-branch når tiden er moden for det. 
-
-# ruteplan
 Eksempler og div praktiske snutter for kommunikasjon med ruteplantjenesten [https://data.norge.no/data/statens-vegvesen/api-ruteplantjeneste-bil](https://data.norge.no/data/statens-vegvesen/api-ruteplantjeneste-bil)
 
 # Brukernavn og passord
@@ -17,8 +14,14 @@ Rate limit er 2500 kall per døgn. Så langt har vi ikke trengt å innføre noen
 
 Noen problemer, for eksempel mange start- og målpunkt, egner seg dårlig for ruteberegningstjeneste. Hvis du har N startpunkt og M målpunkt trenger du $\frac{N*M}{2}$ ruteberegninger. Dette skalerer ikke når N og M blir store. Se notatene om  [nettverksanalyse](https://github.com/ltglahn/ruteplan/tree/test_fattigmannsnettanalyse).
 
+Vær også oppmerksom på at ruteplantjenesten tilbyr en-til-mange funksjonalitet, se dokumentasjon. 
+
 # Dokumentasjon ruteplan 
 
-Etter hvert vil vi ha en beskrivelse av ruteplantjenesten V3 inklusive swagger-dokumentasjon samme sted som vi dokumenterer våre øvrige NVDB-produkter https://nvdb.atlas.vegvesen.no. I mellomtiden har vi publisert swagger-dokument på https://labs.vegdata.no/ruteplandoc/
+Swagger-dokumentasjon https://www.vegvesen.no/ws/no/vegvesen/ruteplan/routingservice_v3_0/open/routingService/openapi/index.html 
 
-Ruteplan versjon 2 er dokumentert på https://labs.vegdata.no/ruteplandoc/ruteplandoc_v2.html 
+# Lenke til ruteplan API 
+
+Lenke til rotnivå for tjenesten (http basic auth) https://www.vegvesen.no/ws/no/vegvesen/ruteplan/routingservice_v3_0/routingService/api
+
+Merk at lenken over ikke fungerer alene: Du må legge til et underliggende endepunkt, for eksempel `/Route/best`. Grunnen er at rotnivå- endepunktet ikke er eksponert mot internett.

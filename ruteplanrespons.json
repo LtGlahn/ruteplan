@@ -1,1072 +1,1157 @@
 {
-    "directions": [
+    "routes": [
         {
-            "features": [
+            "routeId": "cdf22157-9531-4190-88ac-ec48d04776b6",
+            "routeName": "Rv162",
+            "nvdbReferenceLinks": [
                 {
-                    "attributes": {
-                        "ETA": 0,
-                        "length": 0.292,
-                        "maneuverType": "esriDMTDepart",
-                        "roadFeatures": [
-                            {
-                                "attributeType": "length",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "MaxLength",
-                                        "value": "19.5"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "weight",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "50"
-                                    }
-                                ]
-                            }
-                        ],
-                        "text": "{K17059} Start on Storgata",
-                        "time": 33
-                    },
-                    "compressedGeometry": "+0+1+1+34+p22sk+jq53s8-io-io-1rc-1ug-49g-2to-ls-cg-5f0-3mo-4ck-2kc-2to-1l4-3dc-1ug|+34+ot-7-u-1s+0-3o+u-1i-u"
+                    "nvdbReferenceId": "605474",
+                    "fromLength": 0.37648714,
+                    "toLength": 0.720870815557227,
+                    "direction": "Against"
                 },
                 {
-                    "attributes": {
-                        "ETA": 0,
-                        "length": 0.408,
-                        "maneuverType": "esriDMTSharpRight",
-                        "roadFeatures": [
-                            {
-                                "attributeType": "length",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "MaxLength",
-                                        "value": "19.5"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "weight",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "50"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "height",
-                                "distanceAlongSegment": 368.21535528792657,
-                                "id": null,
-                                "location": [
-                                    {
-                                        "easting": 262333,
-                                        "northing": 6649724,
-                                        "srs": "EPSG:25833"
-                                    }
-                                ],
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "4.6"
-                                    }
-                                ]
-                            }
-                        ],
-                        "text": "{R162} Make a sharp right on to Rv162",
-                        "time": 54
-                    },
-                    "compressedGeometry": "+0+1+1+34+p1b8c+jq4k20-9c+1es-1es+340-2kc+4m0-9c+cg-9c+io-24o+1ug-21k+1ug-68+34-fk-68-68+v8-49g+3ps-s4+io-49g+1rc-438+1es-p0+68-cg+34-34+0-ls+68-io+34-1ug+cg-cg+34|+34+gi+1i+2g+42+0+k+1s+18+a-1s+u+4m+a+k+5u+a+a+a+u+18+2g+k"
+                    "nvdbReferenceId": "625521",
+                    "fromLength": 0.68519209,
+                    "toLength": 1,
+                    "direction": "With"
                 },
                 {
-                    "attributes": {
-                        "ETA": 0,
-                        "length": 0.042,
-                        "maneuverType": "esriDMTSharpLeft",
-                        "roadFeatures": [
-                            {
-                                "attributeType": "length",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "MaxLength",
-                                        "value": "19.5"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "weight",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "50"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "vegloggen:Midlertidig stengt",
-                                "distanceAlongSegment": 21.005951537600005,
-                                "id": "NPRA_HBT_10-09-2021.186",
-                                "location": [
-                                    {
-                                        "easting": 262274,
-                                        "northing": 6649732.5,
-                                        "srs": "EPSG:25833"
-                                    }
-                                ],
-                                "values": [
-                                    {
-                                        "key": "RECORD_ID",
-                                        "value": "22847899-3a2a-4db9-bf84-685709954469_1"
-                                    },
-                                    {
-                                        "key": "SITUATION_ID",
-                                        "value": "NPRA_HBT_10-09-2021.186"
-                                    },
-                                    {
-                                        "key": "COUNTY_NUMBER",
-                                        "value": "3"
-                                    },
-                                    {
-                                        "key": "ROAD_NUMBER",
-                                        "value": "R162"
-                                    },
-                                    {
-                                        "key": "OVERALL_START_TIME",
-                                        "value": "2021-09-12T22:00:00Z"
-                                    },
-                                    {
-                                        "key": "OVERALL_END_TIME",
-                                        "value": "2023-12-31T22:00:00Z"
-                                    },
-                                    {
-                                        "key": "DESCRIPTION",
-                                        "value": "Vegarbeid, vegen er stengt.|Omkjøring er skiltet"
-                                    },
-                                    {
-                                        "key": "LOCATION_DESCRIPTION",
-                                        "value": "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo, i retning mot Filipstad"
-                                    },
-                                    {
-                                        "key": "RECORD_SECONDARY_TYPE",
-                                        "value": "roadClosed"
-                                    },
-                                    {
-                                        "key": "NUMPERIODS",
-                                        "value": "0"
-                                    },
-                                    {
-                                        "key": "ISACTIVEINPERIOD",
-                                        "value": "0"
-                                    },
-                                    {
-                                        "key": "NvdbReferenceId",
-                                        "value": "625986"
-                                    }
-                                ]
-                            }
-                        ],
-                        "text": "{R162} Make a sharp left on to Rv162",
-                        "time": 3
-                    },
-                    "compressedGeometry": "+0+1+1+34+p0ens+jq5bsg-438+34|+34+1dk+50"
+                    "nvdbReferenceId": "626953",
+                    "fromLength": 0,
+                    "toLength": 1,
+                    "direction": "Against"
                 },
                 {
-                    "attributes": {
-                        "ETA": 0,
-                        "length": 1.08,
-                        "maneuverType": "esriDMTStraight",
-                        "roadFeatures": [
-                            {
-                                "attributeType": "length",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "MaxLength",
-                                        "value": "19.5"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "weight",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "50"
-                                    }
-                                ]
-                            }
-                        ],
-                        "text": "{R162} Continue on Rv162",
-                        "time": 86
-                    },
-                    "compressedGeometry": "+0+1+1+34+p0akk+jq5bvk-6ts+34-9c0-18k-24o-68-30s+9c-24o+ls-v8+fk-9c+68-4ck+2to-34+34-34+34-1i0+15g-2h8+3a8-io+s4-9c+9c-9c+cg-7ac+9i8-15g+1bo-v8+cg-a50-34-12c-34-p0-io-9c-9c-2to-46c-1l4-2h8-1l4-2kc-2b0-3a8-io-v8-4vc-7gk-2b0-340-cg-cg-24o-1rc-15g-io-fk-34-ls+9c-15g-34-cg-34-cg-io-68-s4+34-cg|+34+1ik-7g-c6-1s+a+18+26+0+6s+0+0+k+1i+0+0+0+2q+0+a-2q-k+0+a-1i-u-a-k-a-2q+k+0+1i+k+1i+a+1i+k+a-k-k"
+                    "nvdbReferenceId": "625524",
+                    "fromLength": 0,
+                    "toLength": 0.94874978,
+                    "direction": "With"
                 },
                 {
-                    "attributes": {
-                        "ETA": 0,
-                        "length": 0.848,
-                        "maneuverType": "esriDMTStraight",
-                        "roadFeatures": [
-                            {
-                                "attributeType": "length",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "MaxLength",
-                                        "value": "19.5"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "weight",
-                                "distanceAlongSegment": 0,
-                                "id": null,
-                                "location": null,
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "50"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "height",
-                                "distanceAlongSegment": 230.75576027496956,
-                                "id": null,
-                                "location": [
-                                    {
-                                        "easting": 261310,
-                                        "northing": 6649483,
-                                        "srs": "EPSG:25833"
-                                    }
-                                ],
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "5"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "height",
-                                "distanceAlongSegment": 308.8998957297916,
-                                "id": null,
-                                "location": [
-                                    {
-                                        "easting": 261251,
-                                        "northing": 6649433,
-                                        "srs": "EPSG:25833"
-                                    }
-                                ],
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "5.8"
-                                    }
-                                ]
-                            },
-                            {
-                                "attributeType": "height",
-                                "distanceAlongSegment": 308.8998957297916,
-                                "id": null,
-                                "location": [
-                                    {
-                                        "easting": 261251,
-                                        "northing": 6649433,
-                                        "srs": "EPSG:25833"
-                                    }
-                                ],
-                                "values": [
-                                    {
-                                        "key": "type",
-                                        "value": "5.8"
-                                    }
-                                ]
-                            }
-                        ],
-                        "text": "{R162} In roundabout, take second exit onto Rv162",
-                        "time": 64
-                    },
-                    "compressedGeometry": "+0+1+1+34+otql8+jq52mo-io+0-1ug-s4-2to-1l4-3gg-27s-cg-fk-9c-ls+12c-3ps+cg-p0+68-s4-9c-cg-2to-2kc-p0-ls-34-34-12c-s4-15g-v8-fk-cg-1l4-1bo-1bo-15g+0-34-340-2h8-1l4-1es-18k-12c-21k-1l4-1o8-1es-340-2ng-v8-18k-p0-1bo-46c-3jk-1ug-1l4-fk-cg-9c-68-2kc-1i0-1l4-p0-2qk-s4-3jk+34-2e4+9c-374+io-ls+9c-3jk+p0-1bo+68|+34+198-18+k-1s-5a-k-a-9c-18-u-u-26-18-a-18-26-k-18-u-a-1s+u+18+2g+2g+3o+u+u-1i-2q+0-a-26-18-18-1i+a-k+0+18+9"
+                    "nvdbReferenceId": "625983",
+                    "fromLength": 0,
+                    "toLength": 1,
+                    "direction": "With"
                 },
                 {
-                    "attributes": {
-                        "ETA": 0,
-                        "length": 0,
-                        "maneuverType": "esriDMTStop",
-                        "roadFeatures": null,
-                        "text": "{R162} Arrive on Rv162",
-                        "time": 0
-                    },
-                    "compressedGeometry": "+0+1+1+34+ort1c+jq3q5s|+34+at"
+                    "nvdbReferenceId": "625977",
+                    "fromLength": 0.00837852,
+                    "toLength": 0.69393384,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "2585041",
+                    "fromLength": 0,
+                    "toLength": 1,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "2585040",
+                    "fromLength": 0,
+                    "toLength": 1,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "625977",
+                    "fromLength": 0.71576302,
+                    "toLength": 1,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "625517",
+                    "fromLength": 0.97181215,
+                    "toLength": 1,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "625529",
+                    "fromLength": 0,
+                    "toLength": 0.352951,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "625518",
+                    "fromLength": 0,
+                    "toLength": 0.19111468,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "2590170",
+                    "fromLength": 0,
+                    "toLength": 1,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "2590174",
+                    "fromLength": 0,
+                    "toLength": 1,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "625518",
+                    "fromLength": 0.21690259,
+                    "toLength": 0.89546435,
+                    "direction": "With"
+                },
+                {
+                    "nvdbReferenceId": "625978",
+                    "fromLength": 0,
+                    "toLength": 0.5715753022926765,
+                    "direction": "With"
                 }
             ],
-            "routeId": 0,
-            "routeName": "Rv162",
-            "summary": {
-                "envelope": {
-                    "xmax": 262829,
-                    "xmin": 260803,
-                    "ymax": 6649946,
-                    "ymin": 6649200
-                },
-                "statistics": [
-                    {
-                        "key": "MeterFerry",
-                        "value": 0
-                    },
-                    {
-                        "key": "toll_small",
-                        "value": 0
-                    },
-                    {
-                        "key": "toll_large",
-                        "value": 0
-                    },
-                    {
-                        "key": "toll_small_no_discount",
-                        "value": 0
-                    },
-                    {
-                        "key": "toll_large_no_discount",
-                        "value": 0
-                    },
-                    {
-                        "key": "FerryCount",
-                        "value": 0
-                    },
-                    {
-                        "key": "TollCount",
-                        "value": 0
-                    },
-                    {
-                        "key": "DistanceInZeroEmissionZone",
-                        "value": 0
-                    }
-                ],
-                "totalDriveTime": 4.016666666666667,
-                "totalLength": 2670,
-                "totalTime": 4.016666666666667
-            }
-        }
-    ],
-    "error": null,
-    "routes": {
-        "features": [
-            {
-                "attributes": {
-                    "Name": null,
-                    "ObjectID": 0,
-                    "Shape_Length": 2670,
-                    "Total_DriveTime tourist": 0,
-                    "Total_Meters": 2670,
-                    "Total_Minutes": 4.016666666666667,
-                    "Total_Toll_Without_Discount large": 0,
-                    "Total_Toll_Without_Discount small": 0,
-                    "Total_Toll large": 0,
-                    "Total_Toll small": 0,
-                    "attributes": [
-                        {
-                            "key": "MeterFerry",
-                            "value": 0
-                        },
-                        {
-                            "key": "FerryCount",
-                            "value": 0
-                        },
-                        {
-                            "key": "TollCount",
-                            "value": 0
-                        },
-                        {
-                            "key": "DistanceInZeroEmissionZone",
-                            "value": 0
-                        }
-                    ]
-                },
-                "geometry": {
-                    "paths": [
-                        [
+            "statistic": {
+                "percentCity": 0,
+                "percentMotorway": 10.93,
+                "percentOutsideCity": 10.93,
+                "meterFerry": "0",
+                "tollSmall": "0",
+                "tollLarge": "0",
+                "tollSmallNoDiscount": "0",
+                "tollLargeNoDiscount": "0",
+                "ferryCount": "0",
+                "tollCount": "0",
+                "distanceInZeroEmissionZone": "0",
+                "totalDriveTime": 4,
+                "totalTime": 4,
+                "totalLength": 2670
+            },
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
                             [
                                 262829,
-                                6649650,
-                                7.97
+                                6649650
                             ],
                             [
                                 262823,
-                                6649644,
-                                7.9
+                                6649644
                             ],
                             [
                                 262804,
-                                6649624,
-                                7.6
+                                6649624
                             ],
                             [
                                 262760,
-                                6649594,
-                                7
+                                6649594
                             ],
                             [
                                 262753,
-                                6649590,
-                                7
+                                6649590
                             ],
                             [
                                 262697,
-                                6649552,
-                                5.8
+                                6649552
                             ],
                             [
                                 262652,
-                                6649525,
-                                6.1
+                                6649525
                             ],
                             [
                                 262622,
-                                6649508,
-                                5.6
+                                6649508
                             ],
                             [
                                 262587,
-                                6649488,
-                                5.3
+                                6649488
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 33,
+                        "length": 292,
+                        "maneuverType": "EsriDmtDepart",
+                        "maneuverText": "{K17059} Start på Storgata",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                262587,
+                                6649488
                             ],
                             [
                                 262584,
-                                6649503,
-                                5.8
+                                6649503
                             ],
                             [
                                 262569,
-                                6649535,
-                                6.6
+                                6649535
                             ],
                             [
                                 262542,
-                                6649583,
-                                7.9
+                                6649583
                             ],
                             [
                                 262539,
-                                6649587,
-                                7.9
+                                6649587
                             ],
                             [
                                 262536,
-                                6649593,
-                                8.1
+                                6649593
                             ],
                             [
                                 262514,
-                                6649613,
-                                8.7
+                                6649613
                             ],
                             [
                                 262493,
-                                6649633,
-                                9.1
+                                6649633
                             ],
                             [
                                 262491,
-                                6649634,
-                                9.2
+                                6649634
                             ],
                             [
                                 262486,
-                                6649632,
-                                8.6
+                                6649632
                             ],
                             [
                                 262484,
-                                6649642,
-                                8.9
+                                6649642
                             ],
                             [
                                 262440,
-                                6649681,
-                                10.4
+                                6649681
                             ],
                             [
                                 262431,
-                                6649687,
-                                10.5
+                                6649687
                             ],
                             [
                                 262387,
-                                6649706,
-                                10.7
+                                6649706
                             ],
                             [
                                 262345,
-                                6649721,
-                                12.6
+                                6649721
                             ],
                             [
                                 262337,
-                                6649723,
-                                12.7
+                                6649723
                             ],
                             [
                                 262333,
-                                6649724,
-                                12.8
+                                6649724
                             ],
                             [
                                 262332,
-                                6649724,
-                                12.9
+                                6649724
                             ],
                             [
                                 262325,
-                                6649726,
-                                13.2
+                                6649726
                             ],
                             [
                                 262319,
-                                6649727,
-                                13.6
+                                6649727
                             ],
                             [
                                 262299,
-                                6649731,
-                                14.4
+                                6649731
                             ],
                             [
                                 262295,
-                                6649732,
-                                14.6
+                                6649732
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 37,
+                        "length": 408,
+                        "maneuverType": "EsriDmtSharpRight",
+                        "maneuverText": "{R162} Sving skarpt høyre inn på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [
+                                {
+                                    "heightRestriction": "4.6",
+                                    "nvdbReferenceId": "",
+                                    "skiltaHoyde": "",
+                                    "beregnaHoyde": "",
+                                    "distanceAlongSegment": 368.5182204373627,
+                                    "location": {
+                                        "x": 262333,
+                                        "y": 6649724,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                }
+                            ],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                262295,
+                                6649732
                             ],
                             [
                                 262253,
-                                6649733,
-                                16.2
+                                6649733
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 3,
+                        "length": 42,
+                        "maneuverType": "EsriDmtSharpLeft",
+                        "maneuverText": "{R162} Sving skarpt venstre inn på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                262253,
+                                6649733
                             ],
                             [
                                 262182,
-                                6649734,
-                                13.8
+                                6649734
                             ],
                             [
                                 262086,
-                                6649721,
-                                9.9
+                                6649721
                             ],
                             [
                                 262064,
-                                6649719,
-                                9.3
+                                6649719
                             ],
                             [
                                 262033,
-                                6649722,
-                                9.4
+                                6649722
                             ],
                             [
                                 262011,
-                                6649729,
-                                9.8
+                                6649729
                             ],
                             [
                                 262001,
-                                6649734,
-                                10.5
+                                6649734
                             ],
                             [
                                 261998,
-                                6649736,
-                                10.5
+                                6649736
                             ],
                             [
                                 261953,
-                                6649766,
-                                12.7
+                                6649766
                             ],
                             [
                                 261952,
-                                6649767,
-                                12.7
+                                6649767
                             ],
                             [
                                 261951,
-                                6649768,
-                                12.7
+                                6649768
                             ],
                             [
                                 261935,
-                                6649780,
-                                12.9
+                                6649780
                             ],
                             [
                                 261909,
-                                6649814,
-                                13.4
+                                6649814
                             ],
                             [
                                 261903,
-                                6649823,
-                                13.4
+                                6649823
                             ],
                             [
                                 261900,
-                                6649826,
-                                13.4
+                                6649826
                             ],
                             [
                                 261897,
-                                6649830,
-                                13.4
+                                6649830
                             ],
                             [
                                 261822,
-                                6649928,
-                                14.3
+                                6649928
                             ],
                             [
                                 261810,
-                                6649942,
-                                14.3
+                                6649942
                             ],
                             [
                                 261800,
-                                6649946,
-                                14.4
+                                6649946
                             ],
                             [
                                 261696,
-                                6649945,
-                                13.5
+                                6649945
                             ],
                             [
                                 261685,
-                                6649944,
-                                13.3
+                                6649944
                             ],
                             [
                                 261677,
-                                6649938,
-                                13.3
+                                6649938
                             ],
                             [
                                 261674,
-                                6649935,
-                                13.4
+                                6649935
                             ],
                             [
                                 261644,
-                                6649892,
-                                12.9
+                                6649892
                             ],
                             [
                                 261627,
-                                6649866,
-                                12.6
+                                6649866
                             ],
                             [
                                 261610,
-                                6649839,
-                                12.5
+                                6649839
                             ],
                             [
                                 261586,
-                                6649805,
-                                12.3
+                                6649805
                             ],
                             [
                                 261580,
-                                6649795,
-                                12.2
+                                6649795
                             ],
                             [
                                 261529,
-                                6649718,
-                                11.3
+                                6649718
                             ],
                             [
                                 261505,
-                                6649686,
-                                11.5
+                                6649686
                             ],
                             [
                                 261501,
-                                6649682,
-                                11.5
+                                6649682
                             ],
                             [
                                 261479,
-                                6649663,
-                                12
+                                6649663
                             ],
                             [
                                 261467,
-                                6649657,
-                                12.2
+                                6649657
                             ],
                             [
                                 261462,
-                                6649656,
-                                12.7
+                                6649656
                             ],
                             [
                                 261455,
-                                6649659,
-                                12.8
+                                6649659
                             ],
                             [
                                 261443,
-                                6649658,
-                                13.3
+                                6649658
                             ],
                             [
                                 261439,
-                                6649657,
-                                13.5
+                                6649657
                             ],
                             [
                                 261435,
-                                6649651,
-                                13.6
+                                6649651
                             ],
                             [
                                 261433,
-                                6649642,
-                                13.4
+                                6649642
                             ],
                             [
                                 261434,
-                                6649638,
-                                13.2
+                                6649638
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 86,
+                        "length": 1080,
+                        "maneuverType": "EsriDmtStraight",
+                        "maneuverText": "{R162} Fortsett på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                261434,
+                                6649638
                             ],
                             [
                                 261428,
-                                6649638,
-                                12.8
+                                6649638
                             ],
                             [
                                 261408,
-                                6649629,
-                                13
+                                6649629
                             ],
                             [
                                 261378,
-                                6649612,
-                                12.4
+                                6649612
                             ],
                             [
                                 261342,
-                                6649589,
-                                10.7
+                                6649589
                             ],
                             [
                                 261338,
-                                6649584,
-                                10.5
+                                6649584
                             ],
                             [
                                 261335,
-                                6649577,
-                                10.4
+                                6649577
                             ],
                             [
                                 261346,
-                                6649538,
-                                7.4
+                                6649538
                             ],
                             [
                                 261350,
-                                6649530,
-                                7
+                                6649530
                             ],
                             [
                                 261352,
-                                6649521,
-                                6.7
+                                6649521
                             ],
                             [
                                 261349,
-                                6649517,
-                                6.4
+                                6649517
                             ],
                             [
                                 261319,
-                                6649490,
-                                5.7
+                                6649490
                             ],
                             [
                                 261311,
-                                6649483,
-                                5.3
+                                6649483
                             ],
                             [
                                 261310,
-                                6649482,
-                                5.2
+                                6649482
                             ],
                             [
                                 261299,
-                                6649473,
-                                4.8
+                                6649473
                             ],
                             [
                                 261287,
-                                6649463,
-                                4.1
+                                6649463
                             ],
                             [
                                 261282,
-                                6649459,
-                                3.9
+                                6649459
                             ],
                             [
                                 261265,
-                                6649445,
-                                3.5
+                                6649445
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 26,
+                        "length": 294,
+                        "maneuverType": "EsriDmtRoundabout",
+                        "maneuverText": "{R162} I rundkjøring, ta andre avkjørsel og fortsett på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [
+                                {
+                                    "heightRestriction": "5",
+                                    "nvdbReferenceId": "",
+                                    "skiltaHoyde": "",
+                                    "beregnaHoyde": "",
+                                    "distanceAlongSegment": 234.4873308946277,
+                                    "location": {
+                                        "x": 261310,
+                                        "y": 6649483,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                }
+                            ],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                261265,
+                                6649445
                             ],
                             [
                                 261251,
-                                6649433,
-                                3.2
+                                6649433
                             ],
                             [
                                 261251,
-                                6649432,
-                                3.1
+                                6649432
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 1,
+                        "length": 19,
+                        "maneuverType": "EsriDmtStraight",
+                        "maneuverText": "{R162} Fortsett på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [
+                                {
+                                    "heightRestriction": "5.8",
+                                    "nvdbReferenceId": "",
+                                    "skiltaHoyde": "",
+                                    "beregnaHoyde": "",
+                                    "distanceAlongSegment": 18.74673780255943,
+                                    "location": {
+                                        "x": 261251,
+                                        "y": 6649433,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                },
+                                {
+                                    "heightRestriction": "5.8",
+                                    "nvdbReferenceId": "",
+                                    "skiltaHoyde": "",
+                                    "beregnaHoyde": "",
+                                    "distanceAlongSegment": 18.74673780255943,
+                                    "location": {
+                                        "x": 261251,
+                                        "y": 6649433,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                }
+                            ],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [
+                                {
+                                    "id": "NPRA_HBT_04-07-2023.95087",
+                                    "situationId": "NPRA_HBT_04-07-2023.95087",
+                                    "recordId": "65116745-5c4b-4fcc-8cb8-2cf28b58a111_1",
+                                    "overallStartTime": "2023-07-04T10:00:00.000+02:00",
+                                    "overallEndTime": "2023-12-03T14:00:00.000+01:00",
+                                    "countyNumber": "3",
+                                    "roadNumber": "R162",
+                                    "situationRecordType": "MaintenanceWorks",
+                                    "situationRecordTypeEnum": "[\"roadworks\"]",
+                                    "generalPublicCommentDescription": "",
+                                    "generalPubliccommentDataProcessingNote": "Vegarbeid.",
+                                    "locationDescription": "Rv. 162 Dronning Mauds gate i Oslo - rv. 162 Dronning Mauds gate i Oslo",
+                                    "validPeriod": "",
+                                    "subRecords": "[]",
+                                    "isMainRecordForPosition": "",
+                                    "probabilityOfOccurrence": "certain",
+                                    "nvdbReferenceId": "625518",
+                                    "distanceAlongSegment": 9.5524865872714,
+                                    "location": {
+                                        "x": 261258,
+                                        "y": 6649438.5,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                }
+                            ],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                261251,
+                                6649432
                             ],
                             [
                                 261219,
-                                6649406,
-                                2.5
+                                6649406
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 3,
+                        "length": 41,
+                        "maneuverType": "EsriDmtStraight",
+                        "maneuverText": "{R162} Fortsett på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [
+                                {
+                                    "id": "NPRA_HBT_04-07-2023.95087",
+                                    "situationId": "NPRA_HBT_04-07-2023.95087",
+                                    "recordId": "65116745-5c4b-4fcc-8cb8-2cf28b58a111_1",
+                                    "overallStartTime": "2023-07-04T10:00:00.000+02:00",
+                                    "overallEndTime": "2023-12-03T14:00:00.000+01:00",
+                                    "countyNumber": "3",
+                                    "roadNumber": "R162",
+                                    "situationRecordType": "MaintenanceWorks",
+                                    "situationRecordTypeEnum": "[\"roadworks\"]",
+                                    "generalPublicCommentDescription": "",
+                                    "generalPubliccommentDataProcessingNote": "Vegarbeid.",
+                                    "locationDescription": "Rv. 162 Dronning Mauds gate i Oslo - rv. 162 Dronning Mauds gate i Oslo",
+                                    "validPeriod": "",
+                                    "subRecords": "[]",
+                                    "isMainRecordForPosition": "",
+                                    "probabilityOfOccurrence": "certain",
+                                    "nvdbReferenceId": "625518",
+                                    "distanceAlongSegment": 20.615528128088304,
+                                    "location": {
+                                        "x": 261235,
+                                        "y": 6649419,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                },
+                                {
+                                    "id": "NPRA_HBT_04-07-2023.95088",
+                                    "situationId": "NPRA_HBT_04-07-2023.95088",
+                                    "recordId": "5cd52b1b-7474-4c6c-8399-256c51d0b6fc_1",
+                                    "overallStartTime": "2023-07-04T00:00:00.000+02:00",
+                                    "overallEndTime": "2023-12-31T23:59:00.000+01:00",
+                                    "countyNumber": "3",
+                                    "roadNumber": "R162",
+                                    "situationRecordType": "MaintenanceWorks",
+                                    "situationRecordTypeEnum": "[\"roadworks\"]",
+                                    "generalPublicCommentDescription": "",
+                                    "generalPubliccommentDataProcessingNote": "Vegarbeid.",
+                                    "locationDescription": "Rv. 162 Dronning Mauds gate i Oslo - rv. 162 Dronning Mauds gate i Oslo, i retning mot Sørenga",
+                                    "validPeriod": "",
+                                    "subRecords": "[]",
+                                    "isMainRecordForPosition": "",
+                                    "probabilityOfOccurrence": "certain",
+                                    "nvdbReferenceId": "625518",
+                                    "distanceAlongSegment": 20.615528128088304,
+                                    "location": {
+                                        "x": 261235,
+                                        "y": 6649419,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                }
+                            ],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                261219,
+                                6649406
                             ],
                             [
                                 261202,
-                                6649391,
-                                2.8
+                                6649391
                             ],
                             [
                                 261189,
-                                6649380,
-                                3.2
+                                6649380
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 3,
+                        "length": 40,
+                        "maneuverType": "EsriDmtStraight",
+                        "maneuverText": "{R162} Fortsett på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [
+                                {
+                                    "id": "NPRA_HBT_04-07-2023.95088",
+                                    "situationId": "NPRA_HBT_04-07-2023.95088",
+                                    "recordId": "5cd52b1b-7474-4c6c-8399-256c51d0b6fc_1",
+                                    "overallStartTime": "2023-07-04T00:00:00.000+02:00",
+                                    "overallEndTime": "2023-12-31T23:59:00.000+01:00",
+                                    "countyNumber": "3",
+                                    "roadNumber": "R162",
+                                    "situationRecordType": "MaintenanceWorks",
+                                    "situationRecordTypeEnum": "[\"roadworks\"]",
+                                    "generalPublicCommentDescription": "",
+                                    "generalPubliccommentDataProcessingNote": "Vegarbeid.",
+                                    "locationDescription": "Rv. 162 Dronning Mauds gate i Oslo - rv. 162 Dronning Mauds gate i Oslo, i retning mot Sørenga",
+                                    "validPeriod": "",
+                                    "subRecords": "[]",
+                                    "isMainRecordForPosition": "",
+                                    "probabilityOfOccurrence": "certain",
+                                    "nvdbReferenceId": "625518",
+                                    "distanceAlongSegment": 19.849433241279208,
+                                    "location": {
+                                        "x": 261204,
+                                        "y": 6649393,
+                                        "sourceReferenceSystem": "EPSG_25833",
+                                        "name": null
+                                    }
+                                }
+                            ],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                261189,
+                                6649380
                             ],
                             [
                                 261168,
-                                6649363,
-                                4
+                                6649363
                             ],
                             [
                                 261150,
-                                6649348,
-                                4.8
+                                6649348
                             ],
                             [
                                 261118,
-                                6649320,
-                                6
+                                6649320
                             ],
                             [
                                 261108,
-                                6649307,
-                                6.3
+                                6649307
                             ],
                             [
                                 261100,
-                                6649293,
-                                6.6
+                                6649293
                             ],
                             [
                                 261057,
-                                6649256,
-                                6.1
+                                6649256
                             ],
                             [
                                 261037,
-                                6649239,
-                                5.2
+                                6649239
                             ],
                             [
                                 261032,
-                                6649235,
-                                5.2
+                                6649235
                             ],
                             [
                                 261029,
-                                6649233,
-                                5.1
+                                6649233
                             ],
                             [
                                 261002,
-                                6649217,
-                                4.4
+                                6649217
                             ],
                             [
                                 260985,
-                                6649209,
-                                4
+                                6649209
                             ],
                             [
                                 260956,
-                                6649200,
-                                3.6
+                                6649200
                             ],
                             [
                                 260919,
-                                6649201,
-                                3.1
+                                6649201
                             ],
                             [
                                 260894,
-                                6649204,
-                                3.2
+                                6649204
                             ],
                             [
                                 260861,
-                                6649210,
-                                3
+                                6649210
                             ],
                             [
                                 260854,
-                                6649213,
-                                3
+                                6649213
                             ],
                             [
                                 260817,
-                                6649221,
-                                3.4
+                                6649221
                             ],
                             [
                                 260803,
-                                6649223,
-                                3.49
+                                6649223
                             ]
                         ]
-                    ]
-                },
-                "geometrysimple": null,
-                "nvdbreferences": [
-                    {
-                        "direction": 2,
-                        "fromrellen": 0.37648714,
-                        "reflinkoid": "605474",
-                        "torellen": 0.720870815557227
                     },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0.68519209,
-                        "reflinkoid": "625521",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 2,
-                        "fromrellen": 0,
-                        "reflinkoid": "626953",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "625524",
-                        "torellen": 0.94874978
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "625983",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0.00837852,
-                        "reflinkoid": "625977",
-                        "torellen": 0.69393384
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "2585041",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "2585040",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0.71576302,
-                        "reflinkoid": "625977",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0.97181215,
-                        "reflinkoid": "625517",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "625529",
-                        "torellen": 0.352951
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "625518",
-                        "torellen": 0.19111468
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "2590170",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "2590174",
-                        "torellen": 1
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0.21690259,
-                        "reflinkoid": "625518",
-                        "torellen": 0.89546435
-                    },
-                    {
-                        "direction": 1,
-                        "fromrellen": 0,
-                        "reflinkoid": "625978",
-                        "torellen": 0.5715753022926765
+                    "properties": {
+                        "time": 47,
+                        "length": 454,
+                        "maneuverType": "EsriDmtStraight",
+                        "maneuverText": "{R162} Fortsett på Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [],
+                            "dognhvileplasser": [],
+                            "lengths": [
+                                {
+                                    "maxLength": "19.5",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "turistVeger": [],
+                            "weights": [
+                                {
+                                    "maxWeight": "50",
+                                    "nvdbReferenceId": ""
+                                }
+                            ],
+                            "ferger": [],
+                            "datex3TrafficMessages": [],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
                     }
-                ]
-            }
-        ]
-    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                260803,
+                                6649223
+                            ],
+                            [
+                                260803,
+                                6649223
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "time": 0,
+                        "length": 0,
+                        "maneuverType": "EsriDmtStop",
+                        "maneuverText": "{R162} Ankomst til Rv162",
+                        "isOutsideOfNorway": false,
+                        "roadFeatures": {
+                            "bomstasjoner": [],
+                            "rasteplasser": [],
+                            "vegkameraer": [],
+                            "heights": [],
+                            "dognhvileplasser": [],
+                            "lengths": [],
+                            "turistVeger": [],
+                            "weights": [],
+                            "ferger": [],
+                            "datex3TrafficMessages": [],
+                            "swedishTrafficMessages": [],
+                            "finnishTrafficMessages": [],
+                            "isOutsideOfNorway": false
+                        }
+                    }
+                }
+            ]
+        }
+    ]
 }

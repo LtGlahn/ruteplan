@@ -35,22 +35,29 @@ if __name__ == '__main__':
 
     # Saving the JSON response for documentation 
     response =  ruteplan.anropruteplan( coordinates = [(p1.x, p1.y), (p2.x, p2.y) ]  )
+    data = response.json()
     with open( 'ruteplanrespons.json', 'w') as f: 
-        json.dump( response.json(), f, indent=4, ensure_ascii=False )
+        json.dump( data, f, indent=4, ensure_ascii=False )
 
-    routingdata = pd.DataFrame( ruteplan.ruteplan2dict( coordinates = [(p1.x, p1.y), (p2.x, p2.y) ]  ))
+    # Making dataframe for the routing segments 
+    routingdata = pd.DataFrame( ruteplan.ruteplan2dict( coordinates= [(p1.x, p1.y), (p2.x, p2.y) ] ))
 
-    # Extracting NVDB linear positions @ link sequence from ruteplan data
-    # (which is list of list, hence the somewhat obscure code for list comprehension 
-    # to flatten list of list => single list 
-    temp = routingdata['nvdbreferences'].to_list()
-    temp  = [ x for sublist in temp for x in sublist ] # Flattening with list comprehension
+    # List of NVDB linear positions @ link sequence from ruteplan data, one per "route" element 
+    # one to three route alternatives may be provided. 
+    # # Option 1: Choose all available routes: 
+    # temp = []
+    # for route in data['routes']: 
+    #     temp.extend( route['nvdbReferenceLinks'] )    
+
+    # Option 2: The optimum route only: 
+    temp = data['routes'][0]['nvdbReferenceLinks'] 
+
 
     # Rounding to 8 decimals precision for the linear positions 
     ruteplan_nvdblinks = []
     for linkref in temp: 
-        linkref['fromrellen'] = round( linkref['fromrellen'], 8)
-        linkref['torellen'] = round( linkref['torellen'], 8)
+        linkref['fromLength'] = round( linkref['fromLength'], 8)
+        linkref['toLength'] = round( linkref['toLength'], 8)
         ruteplan_nvdblinks.append( linkref )
 
     ruteplan_nvdblinksDF = pd.DataFrame( ruteplan_nvdblinks )
@@ -64,7 +71,7 @@ if __name__ == '__main__':
                             'X-Client' : 'nvdbapi.py',
                             'X-Kontaktperson' : 'jan.kristian.jensen@vegvesen.no'}
     url = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegnett/veglenkesekvenser/'
-    for veglenkesekvensID in ruteplan_nvdblinksDF['reflinkoid'].unique(): 
+    for veglenkesekvensID in ruteplan_nvdblinksDF['nvdbReferenceId'].unique(): 
         r = requests.get( url + str(veglenkesekvensID), headers=headers )
         if r.ok: 
             tmp = r.json()
@@ -97,13 +104,13 @@ if __name__ == '__main__':
     junk = []
     for linkref in ruteplan_nvdblinks: 
 
-        if linkref['reflinkoid'] not in kjbn_topology:
+        if linkref['nvdbReferenceId'] not in kjbn_topology:
             # No mapping nescessary, this link sequence is at the VT topology level 
             mapped_NVDBroadlinklist.append( linkref )
 
         else: 
             # Maping from kjørebane => vegtrasé using superstedfesting
-            tempDF0 = NVDBroadlinkDF[ NVDBroadlinkDF['veglenkesekvensid'] == linkref['reflinkoid']]
+            tempDF0 = NVDBroadlinkDF[ NVDBroadlinkDF['veglenkesekvensid'] == linkref['nvdbReferenceId']]
             # There can be mapping to MULTIPLE vegtrasé from a single kjørebane link sequence
             # Example: https://nvdbapiles-v3.atlas.vegvesen.no/vegnett/veglenkesekvenser/1878200.json
             # which maps to TWO vegtrasé in the superstedfesting: 1878165 and 1878201 
@@ -112,45 +119,45 @@ if __name__ == '__main__':
             for minSuperVeglenkesekvens in tempDF0['super_veglenkesekvensid'].unique(): 
 
                 tempDF = tempDF0[ tempDF0['super_veglenkesekvensid'] == minSuperVeglenkesekvens ]
-                newlinkref = { 'kjbane' : linkref, 'reflinkoid' : int( minSuperVeglenkesekvens )  }
+                newlinkref = { 'kjbane' : linkref, 'nvdbReferenceId' : int( minSuperVeglenkesekvens )  }
 
-                # First check if linkref.fromrellen is an exact match for the startposisjon / sluttposisjon columns
+                # First check if linkref.fromLength is an exact match for the startposisjon / sluttposisjon columns
                 # OR if the start/sluttposisjon has a larger extent than our roadlinks
                 # This can happen when our kjørebane maps to multiple vegtrasé links
-                if len( tempDF[ tempDF['startposisjon'] == linkref['fromrellen'] ] == 1 ):
-                    newlinkref['fromrellen'] = tempDF[ tempDF['startposisjon'] == linkref['fromrellen'] ].iloc[0]['super_startposisjon']
-                elif len( tempDF[ tempDF['sluttposisjon'] == linkref['fromrellen'] ] == 1 ):
-                    newlinkref['fromrellen'] = tempDF[ tempDF['sluttposisjon'] == linkref['fromrellen'] ].iloc[0]['super_sluttposisjon']
-                elif linkref['fromrellen'] < tempDF['startposisjon'].min(): 
-                    newlinkref['fromrellen'] = tempDF['startposisjon'].min()
+                if len( tempDF[ tempDF['startposisjon'] == linkref['fromLength'] ] == 1 ):
+                    newlinkref['fromLength'] = tempDF[ tempDF['startposisjon'] == linkref['fromLength'] ].iloc[0]['super_startposisjon']
+                elif len( tempDF[ tempDF['sluttposisjon'] == linkref['fromLength'] ] == 1 ):
+                    newlinkref['fromLength'] = tempDF[ tempDF['sluttposisjon'] == linkref['fromLength'] ].iloc[0]['super_sluttposisjon']
+                elif linkref['fromLength'] < tempDF['startposisjon'].min(): 
+                    newlinkref['fromLength'] = tempDF['startposisjon'].min()
 
                 else: 
                     # Doesn't match start/end points exactly, we must interpolate
-                    temp2DF = tempDF[ (tempDF['startposisjon'] <= linkref['fromrellen']) & (linkref['fromrellen'] <=  tempDF['sluttposisjon'] ) ]
+                    temp2DF = tempDF[ (tempDF['startposisjon'] <= linkref['fromLength']) & (linkref['fromLength'] <=  tempDF['sluttposisjon'] ) ]
                     if len( temp2DF ) != 1: 
-                        print( f"WARNING - there should exactly one row matching position {linkref['fromrellen']} @ link sequence {linkref['reflinkoid']}, found {len(temp2DF)} ")
-                    newlinkref['fromrellen'] = round( np.interp( linkref['fromrellen'], 
+                        print( f"WARNING - there should exactly one row matching position {linkref['fromLength']} @ link sequence {linkref['nvdbReferenceId']}, found {len(temp2DF)} ")
+                    newlinkref['fromLength'] = round( np.interp( linkref['fromLength'], 
                                                                 [ temp2DF.iloc[0]['startposisjon'], temp2DF.iloc[0]['sluttposisjon'] ], 
                                                                 [ temp2DF.iloc[0]['super_startposisjon'], temp2DF.iloc[0]['super_sluttposisjon'] ]  ), 8)                
-                    print( f"Interpolating fromrellen-position {linkref['fromrellen']} @ {linkref['reflinkoid']} => {newlinkref} ")
+                    print( f"Interpolating fromLength-position {linkref['fromLength']} @ {linkref['nvdbReferenceId']} => {newlinkref} ")
 
-                # Repeating that logic for linkref.torellen 
-                # First check if linkref.torellen is an exact match for the startposisjon / sluttposisjon columns
-                if len( tempDF[ tempDF['startposisjon'] == linkref['torellen'] ] == 1 ):
-                    newlinkref['torellen'] = tempDF[ tempDF['startposisjon'] == linkref['torellen'] ].iloc[0]['super_startposisjon']
-                elif len( tempDF[ tempDF['sluttposisjon'] == linkref['torellen'] ] == 1 ):
-                    newlinkref['torellen'] = tempDF[ tempDF['sluttposisjon'] == linkref['torellen'] ].iloc[0]['super_sluttposisjon']
-                elif linkref['torellen'] > tempDF['sluttposisjon'].max(): 
-                    newlinkref['torellen'] = tempDF['sluttposisjon'].max()
+                # Repeating that logic for linkref.toLength 
+                # First check if linkref.toLength is an exact match for the startposisjon / sluttposisjon columns
+                if len( tempDF[ tempDF['startposisjon'] == linkref['toLength'] ] == 1 ):
+                    newlinkref['toLength'] = tempDF[ tempDF['startposisjon'] == linkref['toLength'] ].iloc[0]['super_startposisjon']
+                elif len( tempDF[ tempDF['sluttposisjon'] == linkref['toLength'] ] == 1 ):
+                    newlinkref['toLength'] = tempDF[ tempDF['sluttposisjon'] == linkref['toLength'] ].iloc[0]['super_sluttposisjon']
+                elif linkref['toLength'] > tempDF['sluttposisjon'].max(): 
+                    newlinkref['toLength'] = tempDF['sluttposisjon'].max()
                 else: 
                     # Doesn't match start/end points exactly, we must interpolate
-                    temp2DF = tempDF[ (tempDF['startposisjon'] <= linkref['torellen']) & (linkref['torellen'] <=  tempDF['sluttposisjon'] ) ]
+                    temp2DF = tempDF[ (tempDF['startposisjon'] <= linkref['toLength']) & (linkref['toLength'] <=  tempDF['sluttposisjon'] ) ]
                     if len( temp2DF ) != 1: 
-                        print( f"WARNING - there should exactly one row matching position {linkref['torellen']} @ link sequence {linkref['reflinkoid']}, found {len(temp2DF)} ")
-                    newlinkref['torellen'] = round( np.interp( linkref['torellen'], 
+                        print( f"WARNING - there should exactly one row matching position {linkref['toLength']} @ link sequence {linkref['nvdbReferenceId']}, found {len(temp2DF)} ")
+                    newlinkref['toLength'] = round( np.interp( linkref['toLength'], 
                                                             [ temp2DF.iloc[0]['startposisjon'], temp2DF.iloc[0]['sluttposisjon'] ], 
                                                             [ temp2DF.iloc[0]['super_startposisjon'], temp2DF.iloc[0]['super_sluttposisjon'] ] ), 8)    
-                    print( f"Interpolating torellen-position {linkref['torellen']} @ {linkref['reflinkoid']} => {newlinkref} ")                        
+                    print( f"Interpolating toLength-position {linkref['toLength']} @ {linkref['nvdbReferenceId']} => {newlinkref} ")                        
 
                 mapped_NVDBroadlinklist.append( newlinkref )
                 junk.append( newlinkref )
@@ -158,8 +165,8 @@ if __name__ == '__main__':
     #############################################
     # FINALLY - we have a mapping to the vegtrasé topology level, and can start to query NVDB api for data
 
-    # veglenkeposisjoner = [ str( x['fromrellen'] ) + '-' + str( x['torellen'] ) + '@' + str( int( x['reflinkoid'] ) ) for x in    mapped_NVDBroadlinklist ]
-    veglenkeposisjoner = [ str( min(x['fromrellen'], x['torellen']) ) + '-' + str( max(x['fromrellen'], x['torellen']) ) + '@' + str( int( x['reflinkoid'] ) ) for x in    mapped_NVDBroadlinklist ]
+    # veglenkeposisjoner = [ str( x['fromLength'] ) + '-' + str( x['toLength'] ) + '@' + str( int( x['nvdbReferenceId'] ) ) for x in    mapped_NVDBroadlinklist ]
+    veglenkeposisjoner = [ str( min(x['fromLength'], x['toLength']) ) + '-' + str( max(x['fromLength'], x['toLength']) ) + '@' + str( int( x['nvdbReferenceId'] ) ) for x in    mapped_NVDBroadlinklist ]
 
     # Take some precaution, if this list veglenkeposisjoner is long you need to iterate over (suitable large chunks of) this list.
     # There is an upper limit for how much text you can fit into HTTP GET query, ergo there is a limit for how many elements you can cram into 'veglenkesekvens' - parameter   
@@ -189,5 +196,4 @@ if __name__ == '__main__':
 
     routingdata = gpd.GeoDataFrame( routingdata, geometry='geometry', crs=5973)
     # cant save lists into a geopackage, so deleting the column with list of NVDB references
-    routingdata.drop( columns='nvdbreferences', inplace=True )
     routingdata.to_file( 'demoruteplan.gpkg', layer='ruteforslag', driver='GPKG')

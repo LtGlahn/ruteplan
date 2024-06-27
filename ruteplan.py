@@ -10,7 +10,7 @@ content:
     "ruteplan": {
         "pw": "yourpassword",
         "user": "yourUserName",
-        "url": "https://www.vegvesen.no/ws/no/vegvesen/ruteplan/routingservice_v2_0/routingservice/"
+        "url": "https://www.vegvesen.no/ws/no/vegvesen/ruteplan/routingservice_v3_0/routingService/api/Route/best"
     }
 }
 
@@ -138,7 +138,7 @@ def parseruteplan( responseobj, egenskaper={} ):
     return featurelist
 
 def anropruteplan( ruteplanparams={ 'ReturnFields' : ['Geometry', 'NvdbReferences'] }, 
-                  server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)], **kwargs ): 
+                  server='ruteplan', coordinates = [ (269756.5,7038421.3), (269682.4,7039315.6)], debug=False, **kwargs ): 
     """Fetch data from the NVDB roting API 
 
     Please note that there are two ways  to specify the ruteplan parameters: 
@@ -165,7 +165,9 @@ def anropruteplan( ruteplanparams={ 'ReturnFields' : ['Geometry', 'NvdbReference
         coordinates = list of tuples with (x,y ) coordinates. Must have at least 
         2 members. 
         
-        Server is an element in the credentials.json-file. 
+        Server = 'ruteplan' is an element in the credentials.json-file. 
+
+        debug = False If true, prints debug information. 
 
         Any other keyword is passed directly to the ruteplan API. These additional 
         keywords will override the values of the "ruteplanparams" or "coordinates" keywords
@@ -213,7 +215,8 @@ def anropruteplan( ruteplanparams={ 'ReturnFields' : ['Geometry', 'NvdbReference
         r = requests.get( credentials['url'], params=params, 
                          proxies=proxies)
 
-    print( f"Ruteplan parametre: {json.dumps(params, indent=4)}")
+    if debug:
+        print( f"Ruteplan parametre: {json.dumps(params, indent=4)}")
 
     return r
 
